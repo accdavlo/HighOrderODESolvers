@@ -34,6 +34,7 @@ def compute_theta_DeC(order, nodes_type):
             theta[r,m] = sum(lagrange_basis(nodes,nodes_m,r)*w_m)
     return theta, beta
 
+
 def compute_RK_from_DeC(M_sub,K_corr,nodes_type):
     order=M_sub+1;
     [theta,beta]=compute_theta_DeC(order,nodes_type)
@@ -42,22 +43,23 @@ def compute_RK_from_DeC(M_sub,K_corr,nodes_type):
     theta0= bar_theta[:,0]  # M_sub x 1
     bar_theta= bar_theta[:,1:] #M_sub x M_sub
     A=np.zeros((M_sub*(K_corr-1)+1,M_sub*(K_corr-1)+1))  # (M_sub x K_corr +1)^2
-    b=np.zeros((1,M_sub*(K_corr-1)+1))
-    c=np.zeros((M_sub*(K_corr-1)+1,1))
+    b=np.zeros(M_sub*(K_corr-1)+1)
+    c=np.zeros(M_sub*(K_corr-1)+1)
 
-    c[1:M_sub+1,0]=bar_beta
+    c[1:M_sub+1]=bar_beta
     A[1:M_sub+1,0]=bar_beta
     for k in range(1,K_corr-1):
         r0=1+M_sub*k
         r1=1+M_sub*(k+1)
         c0=1+M_sub*(k-1)
         c1=1+M_sub*(k)
-        c[r0:r1,0]=bar_beta
+        c[r0:r1]=bar_beta
         A[r0:r1,0]=theta0
         A[r0:r1,c0:c1]=bar_theta
-    b[0,0]=theta0[-1]
-    b[0,-M_sub:]=bar_theta[M_sub-1,:]
+    b[0]=theta0[-1]
+    b[-M_sub:]=bar_theta[M_sub-1,:]
     return A,b,c
+
 
 def dec(func, tspan, y_0, M_sub, K_corr, distribution):
     N_time=len(tspan)

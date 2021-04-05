@@ -160,7 +160,7 @@ def nonLinearOscillator_exact_solution(u0,t):
 
 
 # Non linear oscillator damped
-def nonLinearOscillatorDamped_flux(u,alpha=0.01):
+def nonLinearOscillatorDamped_flux(u,t,alpha=0.01):
     ff=np.zeros(np.shape(u))
     n=np.sqrt(np.dot(u,u))
     ff[0]=-u[1]/n-alpha*u[0]/n
@@ -358,6 +358,12 @@ class ODEproblem:
             return nonLinearOscillatorDamped_exact_solution(u,t)
         else:
             raise ValueError("Exact solution not defined for this problem")
+            
+    def exact_solution_times(self,u0,tt):
+        exact_solution=np.zeros((len(u0),len(tt)))
+        for it, t in enumerate(tt):
+            exact_solution[:,it]=self.exact(u0,t)
+        return exact_solution
 
     def prod_dest(self,u,t=0):
         if self.name=="linear_system2":

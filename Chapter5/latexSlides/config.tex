@@ -1,0 +1,172 @@
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\K}{\mathbb K}
+\newcommand{\PP}{\mathbb P}
+\newcommand{\TT}{\mathcal{T}}
+\newcommand{\normal}{\mathbf{N}}
+
+\renewcommand{\SS}{\mathcal{S}}
+\newcommand{\KK}{\mathcal{K}}
+\newcommand{\EE}{\mathcal{E}}
+
+%%%%%Dante 
+\newcommand{\diff}[1]{{\mathrm{d}{#1}}}
+\newcommand{\dotprod}{\boldsymbol \cdot}
+\newcommand{\ddt}[1]   {\frac{\partial{#1}}{\partial{t}}}
+\newcommand{\dsddt}[1] {\dfrac{\partial{#1}}{\partial{t}}}
+\newcommand{\txddt}[1] {\tfrac{\partial{#1}}{\partial{t}}}
+\newcommand{\ddp}[2]   { \frac{\partial #1}{\partial #2}}
+\newcommand{\dsddp}[2] {\dfrac{\partial #1}{\partial #2}}
+\newcommand{\txddp}[2] {\tfrac{\partial #1}{\partial #2}}
+\newcommand{\ddo}[2]   { \frac{\diff #1}{\diff #2}}
+\newcommand{\dsdo}[2]  {\dfrac{\diff #1}{\diff #2}}
+\newcommand{\txddo}[2] {\tfrac{\diff #1}{\diff #2}}
+\newcommand{\Div}[1] { \boldsymbol{\nabla} \!\dotprod #1 }
+\newcommand{\Grad}[1] { \boldsymbol{\nabla} #1 }
+\newcommand{\Gradr}[1]{\widetilde{\boldsymbol{\nabla} {#1}}}
+\newcommand{\vect}[1] {\ww{#1}}
+\newcommand{\versor}[1] {\hat{ \boldsymbol{#1}}}
+\newcommand{\vzero}{\boldsymbol{0}}
+\newcommand{\IdxM} {\mathbb{I}}
+
+ %----------------> Euler and NS equation
+\newcommand{\vel}{\boldsymbol{v}}
+\newcommand{\mm}{\boldsymbol{m}}
+%\newcommand{\ee}{e}
+\newcommand{\hh}{h}
+\newcommand{\Et}{E^t}
+\newcommand{\et}{e^t}
+\newcommand{\qq}{\vect{q}}
+\newcommand{\Rgas}{\mathcal{R}}
+\newcommand{\vecu}{\mathsf{u}}
+\newcommand{\vecf}{\boldsymbol{\mathsf{f}}}
+\newcommand{\vecfa}{\boldsymbol{\mathsf{f}}^a}
+\newcommand{\vecfv}{\boldsymbol{\mathsf{f}}^v}
+\newcommand{\Jac}{\boldsymbol{\mathsf{A}}}   
+\newcommand{\viscT}{\mathbb{S}}
+\newcommand{\Kgas}{\kappa}
+
+ %---------------> Numerical scheme
+%\newcommand{\Rese}{{{\Phi}^e}}
+%\newcommand{\Resei}{{{\Phi}^e_i}}
+%\newcommand{\Reseib}{{{\Phi}^{f,\,\scriptscriptstyle{\partial}}_i}}
+%\newcommand{\HResei}{{{\hat{\Phi}}^e_i}}
+%\newcommand{\sHResei}{{{\hat{\Phi}}^{\,e, \star}_i}}
+%\newcommand{\LResei}{{{\tilde{\Phi}}^e_i}}
+%\newcommand{\vecw}{\mathsf{w}}
+\newcommand{\ResKs}{{{\Phi}^K_\sigma}}
+\newcommand{\ResK}{{{\Phi}^K}}
+        
+%---------------> Text style
+\newcommand{\Tr}{\mathrm{T}}
+\newcommand{\diag}{\mathop{\mathrm{diag}}}
+\newcommand{\xx}{\boldsymbol{x}}
+\newcommand{\dV}{\,\mathrm{d}\Omega}
+\newcommand{\dS}{\,\mathrm{d}\partial\Omega}
+\newcommand{\vecn}{\boldsymbol{\mathbf n}}
+\newcommand{\Ndofe}{N^e_\mathrm{dof}}
+\newcommand{\Ndim}{{N_\mathrm{dim}}}
+\newcommand{\Neqn}{{N_\mathrm{eq}}}
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\FF}{\boldsymbol{\mathsf{R}}} 
+\newcommand{\JJ}{\mathbb{J}} 
+\newcommand{\bbf}{{\mathbf {f}}}
+\newcommand{\bxx}{{\mathbf {x}}}
+\newcommand{\bn}{{\mathbf {n}}}
+\newcommand{\s}{\sqrt{2}}
+\newcommand{\is}{\frac{\sqrt{2}}{2}}
+\newcommand{\hf}{\hat{f}}
+
+\newcommand{\dpar}[2]{\dfrac{\partial #1}{\partial #2}}
+\newcommand{\bu}{\mathbf{u}}
+\newcommand{\bv}{\mathbf{v}}
+\newcommand{\Bv}{\underline{\mathbf{v}}}
+\newcommand{\bbv}{\mathbf{v}}
+\newcommand{\Bbv}{\underline{\mathbf{v}}}
+\newcommand{\bF}{\mathbf{F}}
+\newcommand{\bFF}{\mathcal{F}}
+\newcommand{\bbF}{\mathbf{\mathcal{F}}}
+\newcommand{\bK}{\mathbf{K}}
+\newcommand{\bbu}{\mathbf{u}}
+\newcommand{\bbg}{\mathbf{g}}
+\newcommand{\hbbg}{\hat{\mathbf{g}}}
+\newcommand{\hbbf}{\hat{\mathbf{f}}}
+\newcommand{\hbbfe}{\hat{\mathbf{f}}_{\sigma,\sigma'}}
+\newcommand{\ba}{\mathbf{a}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\by}{\mathbf{y}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\ICI}{\red{\large{ICI}}}
+
+% ---- Notation Philipp
+\newcommand{\ww}[1]{\underline{#1}}
+\renewcommand{\div}{\operatorname{div}}
+\newcommand{\est}[1]{\left\langle#1\right\rangle}
+\newcommand{\bU}{\mathbf{U}}
+\newcommand{\bH}{\mathbf{H}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\bV}{\mathbf{V}}
+\newcommand{\mean}[1]{\overline{#1}}
+\newcommand{\bbfh}{{\mathbf {f}^h}}
+\newcommand{\Ol}{\mathcal{O}}
+\newcommand{\WW}{\mathrm{W}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\II}{\hat{I}_0}
+\newcommand{\1}{\begin{pmatrix}
+                 1\\
+                 1
+                \end{pmatrix}}
+\newcommand{\e}[1]{\mathrm{e^{#1}}}
+\newcommand{\VV}{\mathcal{V}}
+\newcommand{\gnum}{g^{\operatorname{num}}}
+
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+
+%Numerical schemes
+\newcommand{\Resjr}{\Phi^{j+\frac{1}{2}}_j}
+\newcommand{\Resjl}{\Phi^{j-\frac{1}{2}}_j}
+
+\newcommand{\Resjrn}{\Phi^{j+\frac{1}{2},n}_j}
+\newcommand{\Resjln}{\Phi^{j-\frac{1}{2},n}_j}
+
+
+\newcommand{\cc}[1]{\chi_{[t^0,t^{#1}]}}
+
+
+
+%\newcommand{\L}{\mathcal{L}}
+
+
+\renewcommand{\vec}[1]{\ww{#1}}
+\newcommand{\mat}[1]{\ww{\ww{#1}}}
+%Davide
+
+\def\STC{T^n\times V_i}
+\def\SC{V_i}
+\def\TC{T^n}
+\usepackage{bbm}
+\def\L{\mathcal{L}}
+\def\I{\mathcal{I}}
+\def\R{\mathbb{R}}
+\def\bbc{\underline{\boldsymbol{\alpha}}}
+\def\bc{\boldsymbol{\alpha}}
+\def\br{\boldsymbol{r}}
+\def\bd{\mathbf{d}}
+\def\bbd{\underline{\mathbf{d}}}
+\def\bphi{\underline{\phi}}
+\def\M{\underline{\underline{\mathrm{M}}}}
+
+%Colors 
+\definecolor{darkspringgreen}{rgb}{0., 0.55, 0.3}
+\definecolor{dartmouthgreen}{rgb}{0.05, 0.5, 0.06}
+\definecolor{etonblue}{rgb}{0.59, 0.78, 0.64}
+\definecolor{airforceblue}{rgb}{0., 0.4, 0.66}
+\definecolor{arylideyellow}{rgb}{0.91, 0.84, 0.42}
+\definecolor{emerald}{rgb}{0.31, 0.78, 0.47}
+\definecolor{uclagold}{rgb}{1.0, 0.7, 0.0}
+\definecolor{cadmiumorange}{rgb}{0.93, 0.53, 0.18}
