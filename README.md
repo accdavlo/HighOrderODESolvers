@@ -16,6 +16,7 @@ Prerequisites
       * jupyter notebook: [Installation with Anaconda and with pip](https://test-jupyter.readthedocs.io/en/latest/install.html)
       * Add the modules: numpy, scipy, nodepy and matplotlib (if with pip you can run the first cell of the installation) with conda, type ```conda install package-name```.
       * Run the notebook [Guide](https://test-jupyter.readthedocs.io/en/latest/running.html#running)
+      * Clone or download this repository (top right green button) 
       * Test the installation with the [Chapter 0 Notebook](Chapter%200%20Test.ipynb)
    * Google Colab is app that runs on Google Drive. After you installed it you can open the link of Google Colab below on your drive! [Google Colab Main Page](https://research.google.com/colaboratory), [FAQ of Google Colab](https://research.google.com/colaboratory/faq.html). Open the [Google Colab link](https://colab.research.google.com/github/accdavlo/HighOrderODESolvers/blob/master/Chapter%200%20Test.ipynb) of Chapter 0 and run all the cells.
 
@@ -40,3 +41,13 @@ Program
  * Chapter 6: Unconditionally positivity preserving schemes and strong stability preserving schemes. Modified Patankar methods and strong strability preserving Runge Kutta and multistep methods.
 [Notebook](Chapter&#32;6&#32;Positivity&#32;preserving&#32;schemes.ipynb) or [Google Colab](https://colab.research.google.com/github/accdavlo/HighOrderODESolvers/blob/master/Chapter%206%20Positivity%20preserving%20schemes.ipynb) and [Slides for modified Patankar](Chapter6/latexSlides/mPDeC_Chapter6.pdf)
 
+Solutions of exercises
+------
+They are in folder [solutions](/solutions)
+You can open them in Google Colab through
+1. [Google Colab solutions](https://colab.research.google.com/github/accdavlo/HighOrderODESolvers/blob/master/solutions/Chapter%201%20Theory%20of%20ODE.ipynb)
+1. [Google Colab solutions](https://colab.research.google.com/github/accdavlo/HighOrderODESolvers/blob/master/solutions/Chapter%202%20Classical%20Euler%20Methods.ipynb)
+1. [Google Colab solutions](https://colab.research.google.com/github/accdavlo/HighOrderODESolvers/blob/master/solutions/Chapter%203%20Classical%20High%20Order%20Methods.ipynb)
+1. [Google Colab solutions](https://colab.research.google.com/github/accdavlo/HighOrderODESolvers/blob/master/solutions/Chapter%204%20Relaxation%20Runge--Kutta.ipynb)
+1. [Google Colab solutions](https://colab.research.google.com/github/accdavlo/HighOrderODESolvers/blob/master/solutions/Chapter%205%20DeC%20and%20ADER.ipynb)
+1. [Google Colab solutions](https://colab.research.google.com/github/accdavlo/HighOrderODESolvers/blob/master/solutions/Chapter%206%20Positivity%20preserving%20schemes.ipynb)
