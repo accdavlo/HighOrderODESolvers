@@ -10,7 +10,8 @@ The course aims to make the student aware of the cutting-edge algorithms used to
 Prerequisites
 ======
 * Basics of numerical analysis
-* Python Jupyter Notebook on your laptop (suggested if you already use python) or Google Colab installed on Google Drive (all online) (better for unexperienced users)
+* Google Colab installed on Google Drive (all online on Google servers) (better for unexperienced users) **or** Python Jupyter Notebook on your laptop (suggested if you already use python on your laptop) 
+   * Google Colab is an app that runs on Google Drive of your Google account. The installation is straightforward at the opening of the first Google Colab project. Try, opening the [Google Colab link](https://colab.research.google.com/github/accdavlo/HighOrderODESolvers/blob/master/Chapter%200%20Test.ipynb) of Chapter 0 and run all the cells, follow the instructions. More info at [Google Colab Main Page](https://research.google.com/colaboratory) and [FAQ of Google Colab](https://research.google.com/colaboratory/faq.html).
    * Jupyter Notebook: you need to install python3 on your laptop, jupyter notebook and few modules (numpy, scipy, nodepy and matplotlib), best if installed with pip.
       * python3 : [Installation with Anaconda](https://www.anaconda.com/products/individual#Downloads)
       * jupyter notebook: [Installation with Anaconda and with pip](https://test-jupyter.readthedocs.io/en/latest/install.html)
@@ -18,7 +19,6 @@ Prerequisites
       * Run the notebook [Guide](https://test-jupyter.readthedocs.io/en/latest/running.html#running)
       * Clone or download this repository (top right green button) 
       * Test the installation with the [Chapter 0 Notebook](Chapter%200%20Test.ipynb)
-   * Google Colab is app that runs on Google Drive. After you installed it you can open the link of Google Colab below on your drive! [Google Colab Main Page](https://research.google.com/colaboratory), [FAQ of Google Colab](https://research.google.com/colaboratory/faq.html). Open the [Google Colab link](https://colab.research.google.com/github/accdavlo/HighOrderODESolvers/blob/master/Chapter%200%20Test.ipynb) of Chapter 0 and run all the cells.
 
 
 Schedule
