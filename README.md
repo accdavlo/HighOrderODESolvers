@@ -10,9 +10,9 @@ The course aims to make the student aware of the cutting-edge algorithms used to
 Prerequisites
 ======
 * Basics of numerical analysis
-* Google Colab installed on Google Drive (all online on Google servers) (better for unexperienced users) **or** Python Jupyter Notebook on your laptop (suggested if you already use python on your laptop) 
-   * Google Colab is an app that runs on Google Drive of your Google account. The installation is straightforward at the opening of the first Google Colab project. Try, opening the [Google Colab link](https://colab.research.google.com/github/accdavlo/HighOrderODESolvers/blob/master/Chapter%200%20Test.ipynb) of Chapter 0 and run all the cells, follow the instructions. More info at [Google Colab Main Page](https://research.google.com/colaboratory) and [FAQ of Google Colab](https://research.google.com/colaboratory/faq.html).
-   * Jupyter Notebook: you need to install python3 on your laptop, jupyter notebook and few modules (numpy, scipy, nodepy and matplotlib), best if installed with pip.
+* The course is based on Python Notebooks. They can be run locally on your laptop **or** online. Choose **one of the following possibilities**:
+   * **Google Colab** installed on Google Drive (all online on Google servers) (**suggested** for unexperienced users) is an app that runs on Google Drive of your Google account. The installation is straightforward at the opening of the first Google Colab project. Try opening the [Google Colab link](https://colab.research.google.com/github/accdavlo/HighOrderODESolvers/blob/master/Chapter%200%20Test.ipynb) of Chapter 0 and run all the cells, follow the instructions that are inside the notebook. More info on Google Colab at [Google Colab Main Page](https://research.google.com/colaboratory) and [FAQ of Google Colab](https://research.google.com/colaboratory/faq.html).
+   * **Jupyter Notebook on your laptop** (**unrecommended** if you do not use already python on your laptop and you are not a bit experienced with jupyter notebooks): you need to install python3 on your laptop, jupyter notebook and few modules (numpy, scipy, nodepy and matplotlib), best if installed with pip.
       * python3 : [Installation with Anaconda](https://www.anaconda.com/products/individual#Downloads)
       * jupyter notebook: [Installation with Anaconda and with pip](https://test-jupyter.readthedocs.io/en/latest/install.html)
       * Add the modules: numpy, scipy, nodepy and matplotlib (if with pip you can run the first cell of the installation) with conda, type ```conda install package-name```.
