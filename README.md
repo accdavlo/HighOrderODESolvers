@@ -10,7 +10,7 @@ The course aims to make the student aware of the cutting-edge algorithms used to
 Prerequisites
 ======
 * Basics of numerical analysis
-* The course is based on Python Notebooks. They can be run locally on your laptop **or** online. Choose **one of the following possibilities**:
+* The course is based on Python Notebooks. They can be run locally on your laptop **or** online through Google Colab (**suggested**, you just need a Google account). Choose **one of the following possibilities**:
    * **Google Colab** installed on Google Drive (all online on Google servers) (**suggested** for unexperienced users) is an app that runs on Google Drive of your Google account. The installation is straightforward at the opening of the first Google Colab project. Try opening the [Google Colab link](https://colab.research.google.com/github/accdavlo/HighOrderODESolvers/blob/master/Chapter%200%20Test.ipynb) of Chapter 0 and run all the cells, follow the instructions that are inside the notebook. More info on Google Colab at [Google Colab Main Page](https://research.google.com/colaboratory) and [FAQ of Google Colab](https://research.google.com/colaboratory/faq.html).
    * **Jupyter Notebook on your laptop** (**unrecommended** if you do not use already python on your laptop and you are not a bit experienced with jupyter notebooks): you need to install python3 on your laptop, jupyter notebook and few modules (numpy, scipy, nodepy and matplotlib), best if installed with pip.
       * python3 : [Installation with Anaconda](https://www.anaconda.com/products/individual#Downloads)
