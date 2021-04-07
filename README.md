@@ -15,7 +15,7 @@ Prerequisites
    * **Jupyter Notebook on your laptop** (**unrecommended** if you do not use already python on your laptop and you are not a bit experienced with jupyter notebooks): you need to install python3 on your laptop, jupyter notebook and few modules (numpy, scipy, nodepy and matplotlib), best if installed with pip.
       * python3 : [Installation with Anaconda](https://www.anaconda.com/products/individual#Downloads)
       * jupyter notebook: [Installation with Anaconda and with pip](https://test-jupyter.readthedocs.io/en/latest/install.html)
-      * Add the modules: numpy, scipy, nodepy and matplotlib (if with pip you can run the first cell of the installation) with conda, type ```conda install package-name```.
+      * Add the modules: numpy, scipy, nodepy and matplotlib: with pip ```pip install package-name``` with conda ```conda install package-name```.
       * Run the notebook [Guide](https://test-jupyter.readthedocs.io/en/latest/running.html#running)
       * Clone or download this repository (top right green button) 
       * Test the installation with the [Chapter 0 Notebook](Chapter%200%20Test.ipynb)
