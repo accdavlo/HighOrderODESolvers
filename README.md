@@ -1,7 +1,12 @@
 # HighOrderODESolvers
-This is a repository for the course on "High order accurate time integration methods"
+[![License: MIT](https://img.shields.io/badge/License-MIT-success.svg)](https://opensource.org/licenses/MIT)
 
-[Course Page](https://www.adum.fr/script/formations.pl?mod=292601&site=edmi)
+This is a repository for the course on "High order accurate time integration methods" held in the Doctoral School at University of Bordeaux ([Course Page](https://www.adum.fr/script/formations.pl?mod=292601&site=edmi)). 
+
+
+The code developed in the course is available in this repository under the MIT License, without any warranty.
+
+
 
 Goal
 ======
@@ -51,3 +56,9 @@ You can open them in Google Colab through
 1. [Google Colab solutions](https://colab.research.google.com/github/accdavlo/HighOrderODESolvers/blob/master/solutions/Chapter%204%20Relaxation%20Runge--Kutta.ipynb)
 1. [Google Colab solutions](https://colab.research.google.com/github/accdavlo/HighOrderODESolvers/blob/master/solutions/Chapter%205%20DeC%20and%20ADER.ipynb)
 1. [Google Colab solutions](https://colab.research.google.com/github/accdavlo/HighOrderODESolvers/blob/master/solutions/Chapter%206%20Positivity%20preserving%20schemes.ipynb)
+
+
+
+## Disclaimer for the code
+
+Everything is provided as-is and without warranty. Use at your own risk!
