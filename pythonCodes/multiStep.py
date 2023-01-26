@@ -1,3 +1,5 @@
+import numpy as np
+
 ## explicit Adams Bashforth method
 def multiAB(flux, tspan, y_0, b):
     # Solving u'=F(u,t)
