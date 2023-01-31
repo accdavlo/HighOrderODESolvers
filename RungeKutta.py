@@ -1,3 +1,6 @@
+import numpy as np
+from scipy import optimize
+
 ## explicit RK method
 def explicitRK(flux, tspan, y_0, A, b, c):
     """
@@ -74,3 +77,108 @@ def explicitRelaxRK(flux, y_0, dt0, T_fin, KtMax,  A, b, c):
         n=n+1
         
     return tspan[:n+1], y[:,:n+1] , gammas[:n+1]
+
+def implicitEuler(func, jac_func, tspan, y_0):
+    '''
+    Implicit Euler method with a nonlinear solver
+    Input:
+    func (nonlinear) function of the ODE, takes input u, t
+    jac_func jacobian wrt to u of func, takes input u, t
+    tspan vector of timesteps (t^0,...,t^N)
+    y_0 initial value    
+    '''
+    N_time=len(tspan)  # N+1
+    dim=len(y_0)          # S
+    y=np.zeros((dim,N_time))    # initializing the variable of solutions    
+    y[:,0]=y_0                 # first timestep 
+    for n in range(N_time-1):    # loop through timesteps n=0,..., N-1
+        # define the nonlinear function to be solved
+        res = lambda yn1: yn1 -y[:,n] -(tspan[n+1]-tspan[n])*func(yn1,tspan[n+1])
+        jacRes = lambda yn1: np.eye(dim) - (tspan[n+1]-tspan[n])*jac_func(yn1,tspan[n+1])
+        z = optimize.newton(res, y[:,n], fprime=jacRes) # using Newton's method from scipy.optimize
+        y[:,n+1] = z
+    return tspan, y 
+
+def CrankNicolson(func, jac_func, tspan, y_0):
+    '''
+    Crank-Nicolson method with a nonlinear solver
+    Input:
+    func (nonlinear) function of the ODE, takes input u, t
+    jac_func jacobian wrt to u of func, takes input u, t
+    tspan vector of timesteps (t^0,...,t^N)
+    y_0 initial value    
+    '''
+    N_time=len(tspan)  # N+1
+    dim=len(y_0)          # S
+    y=np.zeros((dim,N_time))    # initializing the variable of solutions    
+    y[:,0]=y_0                 # first timestep 
+    for n in range(N_time-1):    # loop through timesteps n=0,..., N-1
+        # define the nonlinear function to be solved
+        res = lambda yn1: yn1 -y[:,n] -(tspan[n+1]-tspan[n])*0.5*(func(yn1,tspan[n+1])+func(y[:,n],tspan[n]))
+        jacRes = lambda yn1: np.eye(dim) - 0.5*(tspan[n+1]-tspan[n])*jac_func(yn1,tspan[n+1])
+        z = optimize.newton(res, y[:,n], fprime=jacRes) # using Newton's method from scipy.optimize
+        y[:,n+1] = z
+    return tspan, y 
+
+def IRK(func, jac_func, A, b, tspan, y_0):
+    '''
+    Implicit RK method with a nonlinear solver
+    Input:
+    func (nonlinear) function of the ODE, takes input u, t
+    jac_func jacobian wrt to u of func, takes input u, t
+    tspan vector of timesteps (t^0,...,t^N)
+    y_0 initial value    
+    '''
+    N_time=len(tspan)  # N+1
+    dim=len(y_0)          # S
+    y=np.zeros((dim,N_time))    # initializing the variable of solutions   
+    RKdim = np.shape(A)[0]     # RK dimension 
+    c = np.sum(A,axis=1)       # c RK
+    y[:,0]=y_0                 # first timestep
+    un = np.zeros((dim * RKdim)) # vector of previous value for RK
+    t_loc = np.zeros(RKdim)
+
+
+    for n in range(N_time-1):    # loop through timesteps n=0,..., N-1
+        dt = tspan[n+1]-tspan[n] #timestep
+        for i in range(RKdim):  # creating vector dimension dim*NRK with un everywhere
+            un[i*dim:(i+1)*dim] = y[:,n]
+            t_loc[i] = tspan[n] + dt*c[i]  # times of stages
+
+        def res_RK(u):
+            """residual equation of implicit RK """
+            res = np.zeros(len(u))
+            ff = np.zeros(len(u)) # [func(u^{(1)}),...,func(u^{(NRK)})]
+            for i in range(RKdim):
+                ff[i*dim:(i+1)*dim] = func(u[i*dim:(i+1)*dim],t_loc[i])
+            for i in range(RKdim): # U-y^n-A F(U)
+                res[i*dim:(i+1)*dim] = u[i*dim:(i+1)*dim] - y[:,n] 
+                for j in range(RKdim):
+                    res[i*dim:(i+1)*dim] = res[i*dim:(i+1)*dim]\
+                        -dt*A[i,j]*ff[j*dim:(j+1)*dim]
+            return res
+        
+        def jac_res_RK(u):
+            """jacobian of the residual equation"""
+            jac = np.zeros((len(u),len(u))) # dimension (dim*NRK)^2
+            jj = np.zeros((len(u),dim))
+            for i in range(RKdim): # jacobian of rhs in each variable u^{(i)}
+                jj[i*dim:(i+1)*dim,:] = jac_func(u[i*dim:(i+1)*dim],t_loc[i])
+            for i in range(RKdim): 
+                # jacobian in cell [i,j] of dimension dim x dim
+                # is \delta_{ij} I_dim -dt A_ij J_u F(u^{(j)})
+                jac[i*dim:(i+1)*dim,i*dim:(i+1)*dim] = np.eye(dim)
+                for j in range(RKdim):
+                    jac[i*dim:(i+1)*dim,j*dim:(j+1)*dim]=\
+                        jac[i*dim:(i+1)*dim,j*dim:(j+1)*dim] \
+                        -dt*A[i,j]*jj[j*dim:(j+1)*dim,:]
+            return jac
+
+        # finding the solution of the residual equation 
+        z = optimize.root(res_RK, un, jac=jac_res_RK, method="lm")
+        
+        # reconstructing at new timestep
+        y[:,n+1] = y[:,n]
+        for i in range(RKdim):
+            y[:,n+1] = y[:,n+1] + dt*b[i]*func(z.x[i*dim:(i+1)*dim],t_loc[i])
+    return tspan, y 
