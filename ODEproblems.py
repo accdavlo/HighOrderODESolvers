@@ -15,6 +15,18 @@ def linear_scalar_jacobian(u,t=0,k_coef=10):
     Jf[0,0]=-k_coef
     return Jf
 
+
+## Stiff scalar 
+def stiff_scalar_flux(u,t=0.,k_coef=2000.):
+    ff=np.zeros(len(u))
+    ff[0]= -k_coef*(u[0]-np.cos(t))
+    return ff
+
+def stiff_scalar_jacobian(u,t=0,k_coef=2000.):
+    Jf=np.zeros((len(u),len(u)))
+    Jf[0,0]=-k_coef
+    return Jf
+
 #nonlinear problem y'=-ky|y| +1  
 def nonlinear_scalar_flux(u,t=0,k_coef=10):
     ff=np.zeros(np.shape(u))
@@ -144,18 +156,30 @@ def SIR_production_destruction(u,t=0,beta=3,gamma=1):
     return p,d
 
 # Nonlinear_oscillator
-def nonLinearOscillator_flux(u,t=0,alpha=0.):
+def nonLinearOscillator_flux(u,t=0.,alpha=0.):
     ff=np.zeros(np.shape(u))
     n=np.sqrt(np.dot(u,u))
-    ff[0]=-u[1]/n-alpha*u[0]/n
-    ff[1]=u[0]/n - alpha*u[1]/n
+    ff[0]=-u[1]/n-alpha*u[0]
+    ff[1]=u[0]/n - alpha*u[1]
     return ff
 
-def nonLinearOscillator_exact_solution(u0,t):
+def nonLinearOscillator_jacobian(u,t=0.,alpha=0.):
+    n=np.sqrt(np.dot(u,u))
+    Jf = np.array([
+        [u[0]*u[1]/n**3-alpha, u[1]**2/n**3-1./n],
+        [-u[0]**2/n**3+1./n, -u[0]*u[1]/n**3-alpha]
+    ])
+    return Jf
+
+def nonLinearOscillator_exact_solution(u0,t=0.,alpha=0.):
     u_ex=np.zeros(np.shape(u0))
     n=np.sqrt(np.dot(u0,u0))
-    u_ex[0]=np.cos(t/n)*u0[0]-np.sin(t/n)*u0[1]
-    u_ex[1]=np.sin(t/n)*u0[0]+np.cos(t/n)*u0[1]
+    if abs(alpha)<1e-14:
+        theta=t/n
+    else:
+        theta = (np.exp(alpha*t)-1.)/alpha/n
+    A = np.array([[np.cos(theta), -np.sin(theta)],[np.sin(theta), np.cos(theta)]])
+    u_ex = np.exp(-alpha *t )*A@u0
     return u_ex
 
 def nonLinearOscillator_entropy(u,t=0,alpha=0.):
@@ -164,22 +188,6 @@ def nonLinearOscillator_entropy(u,t=0,alpha=0.):
 def nonLinearOscillator_entropy_variable(u,t=0,alpha=0.):
     return u
 
-
-# Non linear oscillator damped
-def nonLinearOscillatorDamped_flux(u,t,alpha=0.01):
-    ff=np.zeros(np.shape(u))
-    n=np.sqrt(np.dot(u,u))
-    ff[0]=-u[1]/n-alpha*u[0]/n
-    ff[1]=u[0]/n - alpha*u[1]/n
-    return ff
-
-def nonLinearOscillatorDamped_exact_solution(u0,t,alpha=0.01):
-    u_ex=np.zeros(np.shape(u0))
-    n0=np.sqrt(np.dot(u0,u0))
-    n=n0*np.exp(-alpha*t)
-    u_ex[0]=n/n0*(np.cos(t/n)*u0[0]-np.sin(t/n)*u0[1])
-    u_ex[1]=n/n0*(np.sin(t/n)*u0[0]+np.cos(t/n)*u0[1])
-    return u_ex
 
 
 # pendulum
@@ -305,6 +313,10 @@ class ODEproblem:
             self.T_fin= 2.
             self.k_coef=10
             self.matrix=np.array([-self.k_coef])
+        elif self.name=="stiff_scalar":
+            self.k_coef=2000.
+            self.u0 = np.array([0.])
+            self.T_fin= 1.5
         elif self.name=="nonlinear_scalar":
             self.k_coef=10
             self.u0 = np.array([1.1/np.sqrt(self.k_coef)])
@@ -325,9 +337,11 @@ class ODEproblem:
         elif self.name=="nonLinearOscillator":
             self.u0 = np.array([1.,0.])
             self.T_fin= 50
+            self.alpha = 0.
         elif self.name=="nonLinearOscillatorDamped":
             self.u0 = np.array([1.,0.])
             self.T_fin= 50
+            self.alpha = 0.01
         elif self.name=="pendulum":
             self.u0 = np.array([2.,0.])
             self.T_fin= 50
@@ -346,6 +360,8 @@ class ODEproblem:
     def flux(self,u,t=0):
         if self.name=="linear_scalar":
             return linear_scalar_flux(u,t,self.k_coef)
+        elif self.name=="stiff_scalar":
+            return stiff_scalar_flux(u,t,self.k_coef)
         elif self.name=="nonlinear_scalar":
             return nonlinear_scalar_flux(u,t,self.k_coef)
         elif self.name=="linear_system2":
@@ -357,9 +373,9 @@ class ODEproblem:
         elif self.name=="SIR":
             return SIR_flux(u,t)
         elif self.name=="nonLinearOscillator":
-            return nonLinearOscillator_flux(u,t)
+            return nonLinearOscillator_flux(u,t,self.alpha)
         elif self.name=="nonLinearOscillatorDamped":
-            return nonLinearOscillatorDamped_flux(u,t)
+            return nonLinearOscillator_flux(u,t,self.alpha)
         elif self.name=="pendulum":
             return pendulum_flux(u,t)
         elif self.name=="Robertson":
@@ -374,6 +390,8 @@ class ODEproblem:
     def jacobian(self,u,t=0):
         if self.name=="linear_scalar":
             return linear_scalar_jacobian(u,t,self.k_coef)
+        elif self.name=="stiff_scalar":
+            return nonlinear_scalar_jacobian(u,t,self.k_coef)
         elif self.name=="nonlinear_scalar":
             return nonlinear_scalar_jacobian(u,t,self.k_coef)
         elif self.name=="linear_system2":
@@ -384,6 +402,10 @@ class ODEproblem:
             return pendulum_jacobian(u,t)
         elif self.name=="SIR":
             return SIR_jacobian(u,t)
+        elif self.name=="nonLinearOscillator":
+            return nonLinearOscillator_jacobian(u,t,self.alpha)
+        elif self.name=="nonLinearOscillatorDamped":
+            return nonLinearOscillator_jacobian(u,t,self.alpha)
         elif self.name=="Robertson":
             return Robertson_jacobian(u,t)
         elif self.name=="lotka":
@@ -401,9 +423,9 @@ class ODEproblem:
         elif self.name=="linear_system3":
             return linear_system3_exact_solution(u,t)
         elif self.name=="nonLinearOscillator":
-            return nonLinearOscillator_exact_solution(u,t)
+            return nonLinearOscillator_exact_solution(u,t,self.alpha)
         elif self.name=="nonLinearOscillatorDamped":
-            return nonLinearOscillatorDamped_exact_solution(u,t)
+            return nonLinearOscillator_exact_solution(u,t,self.alpha)
         else:
             raise ValueError("Exact solution not defined for this problem")
             
@@ -430,7 +452,7 @@ class ODEproblem:
             return pendulum_entropy(u,t)
         elif self.name == "lotka":
             return lotka_entropy(u,t=t)
-        elif self.name in ["nonLinearOscillator", "linear_system2"]:
+        elif self.name in ["nonLinearOscillator","nonLinearOscillatorDamped", "linear_system2"]:
             return square_entropy(u)
         else:
             raise ValueError("Entropy not defined for this problem")
@@ -440,7 +462,7 @@ class ODEproblem:
             return pendulum_entropy_variables(u,t)
         elif self.name == "lotka":
             return lotka_entropy_variables(u,t=t)
-        elif self.name in ["nonLinearOscillator", "linear_system2"]:
+        elif self.name in ["nonLinearOscillator","nonLinearOscillatorDamped", "linear_system2"]:
             return square_entropy_variable(u)
         else:
             raise ValueError("Entropy variable not defined for this problem")

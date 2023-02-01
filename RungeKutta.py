@@ -116,8 +116,8 @@ def CrankNicolson(func, jac_func, tspan, y_0):
         # define the nonlinear function to be solved
         res = lambda yn1: yn1 -y[:,n] -(tspan[n+1]-tspan[n])*0.5*(func(yn1,tspan[n+1])+func(y[:,n],tspan[n]))
         jacRes = lambda yn1: np.eye(dim) - 0.5*(tspan[n+1]-tspan[n])*jac_func(yn1,tspan[n+1])
-        z = optimize.newton(res, y[:,n], fprime=jacRes) # using Newton's method from scipy.optimize
-        y[:,n+1] = z
+        z = optimize.root(res, y[:,n], jac=jacRes) # using Newton's method from scipy.optimize
+        y[:,n+1] = z.x
     return tspan, y 
 
 def IRK(func, jac_func, A, b, tspan, y_0):
