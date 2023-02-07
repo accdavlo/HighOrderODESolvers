@@ -56,9 +56,8 @@
 
 \author[D. Torlo]{Davide Torlo}
 
-\institute[Inria]
-{Inria Bordeaux - Sud Ouest\\
-Team Cardamom}
+\institute[SISSA]
+{SISSA Mathlab}
 
 
 \date[]
@@ -96,14 +95,14 @@ Team Cardamom}
 \section{Motivation}
 
 \begin{frame}{Motivation: high order accurate explicit method}
-	We want to solve a hyperbolic  PDE system for $u:\R^+\times \Omega \to \R^D$
+	Methods used to solve a hyperbolic  PDE system for $u:\R^+\times \Omega \to \R^D$
 	\begin{equation}\label{eq:scalarPDE}
 		\partial_t u + \nabla_{\mathbf{x}} \mathcal{F}(u) =0.
 	\end{equation}
 
 	Or ODE system for $\bc:\R^+\to \R^S$
 	\begin{equation}\label{eq:scalarODE}
-		\partial_t \bc + F(\bc) =0.
+		\partial_t \bc = F(\bc) .
 	\end{equation}
 	
 	Applications:
@@ -133,15 +132,15 @@ Team Cardamom}
 \begin{frame}{Classical time integration: Runge--Kutta}
 \begin{align}
 	&\bc^{(1)}:=\bc^n,\\
-	&\bc^{(k)}:=\bc^n+\sum_{s=1}^{K} A_{ks} F\left(t^n+b_s\Delta t,\bc^{(s)}\right), \quad \text{for } k=2,\dots, K, \label{eq:RK}\\
-	&\bc^{n+1}:= \sum_{k=1}^K \gamma_k \bc^{(k)}.
+	&\bc^{(k)}:=\bc^n+\sum_{s=1}^{K} a_{ks} F\left(t^n+c_s\Delta t,\bc^{(s)}\right), \quad \text{for } k=2,\dots, K, \label{eq:RK}\\
+	&\bc^{n+1}:= \bc^n+\sum_{s=1}^{K} b_{s} F\left(t^n+c_s\Delta t,\bc^{(s)}\right).
 \end{align}
  
 \end{frame}
 
 \begin{frame}{Classical time integration: Explicit Runge--Kutta}
 \begin{align*}
-	&\bc^{(k)}:=\bc^n+\sum_{s=1}^{k-1} A_{ks} F\left(t^n+b_s\Delta t,\bc^{(s)}\right), \quad \text{for } k=2,\dots, K.
+	&\bc^{(k)}:=\bc^n+\sum_{s=1}^{k-1} a_{ks} F\left(t^n+c_s\Delta t,\bc^{(s)}\right),\quad \text{for } k=2,\dots, K.
 \end{align*}
 
 \begin{itemize}
@@ -157,7 +156,7 @@ Team Cardamom}
 
 \begin{frame}{Classical time integration: Implicit Runge--Kutta}
 \begin{align*}
-	&\bc^{(k)}:=\bc^n+\sum_{s=1}^{K} A_{ks} F\left(t^n+b_s\Delta t,\bc^{(s)}\right), \quad \text{for } k=2,\dots, K.
+	&\bc^{(k)}:=\bc^n+\sum_{s=1}^{K} a_{ks} F\left(t^n+c_s\Delta t,\bc^{(s)}\right), \quad \text{for } k=2,\dots, K.
 \end{align*}
 
 \begin{itemize}
@@ -166,7 +165,7 @@ Team Cardamom}
 \begin{itemize}
 \item Take a high order quadrature rule on $[t^n,t^{n+1}]$
 \item Compute the coefficients accordingly, see Gauss--Legendre or Gauss--Lobatto polynomials
-\item Order up to $d=2K-1$ 
+\item Order up to $d=2K$ 
 \end{itemize}
 \end{itemize} 
  
@@ -185,11 +184,11 @@ Two iterative explicit arbitrarily high order accurate methods.
 	\begin{minipage}{0.65\textwidth}
 	High order in time: we discretize our variable on $[t^n, t^{n+1}]$ in $M$ substeps ($\bc^{m}$).
 		\begin{equation*}
-			\partial_t\bc + F(\bc(t))=0.
+			\partial_t\bc = F(\bc(t)).
 		\end{equation*}
 	
 		Thanks to Picard–Lindelöf theorem, we can rewrite 	\begin{equation*}
-			\bc^{m}=\bc^0 -\int_{t^0}^{t^m} F(\bc(t))dt.
+			\bc^{m}=\bc^0 +\int_{t^0}^{t^m} F(\bc(t))dt.
 		\end{equation*} and if we want to reach order $r+1$ we need $M=r$. 
 	\end{minipage}
 	\begin{minipage}{0.32\textwidth}
@@ -220,22 +219,22 @@ Two iterative explicit arbitrarily high order accurate methods.
 			\L^2(\bc^0, \dots, \bc^M) &
 			\only<1>{=
 			\begin{pmatrix}
-				\bc^M-\bc^0 -\sum_{r=0}^M \int_{t^0}^{t^M} F(\bc^r) \varphi_r(s) \diff s\\
+				\bc^M-\bc^0 +\sum_{r=0}^M \int_{t^0}^{t^M} F(\bc^r) \varphi_r(s) \diff s\\
 				\vdots\\
-				\bc^1-\bc^0 - \sum_{r=0}^M \int_{t^0}^{t^1} F(\bc^r) \varphi_r(s) \diff s
+				\bc^1-\bc^0 + \sum_{r=0}^M \int_{t^0}^{t^1} F(\bc^r) \varphi_r(s) \diff s
 			\end{pmatrix}
 		}
 			\only<2>{=
 			\begin{pmatrix}
-				\bc^M-\bc^0 -\Delta t \sum_{r=0}^M \theta_r^M F(\bc^r) \\
+				\bc^M-\bc^0 +\Delta t \sum_{r=0}^M \theta_r^M F(\bc^r) \\
 				\vdots\\
-				\bc^1-\bc^0 - \Delta t \sum_{r=0}^M  \theta_r^1  F(\bc^r) 
+				\bc^1-\bc^0 + \Delta t \sum_{r=0}^M  \theta_r^1  F(\bc^r) 
 			\end{pmatrix}}
 		\end{align*}
 	}
 		\begin{itemize}
 			\item $\L^2=0$ is a system of $M \times S$ coupled (non)linear equations
-			\item $\L^2$ is an implicit method 
+			\item $\L^2$ is an implicit method (collocation method: Gauss, LobattoIIIA)
 			\item Not easy to solve directly $\L^2(\bbc^*)=0$
 			\item High order ($\geq M+1$), depending on points distribution
 		\end{itemize}
@@ -265,9 +264,9 @@ Two iterative explicit arbitrarily high order accurate methods.
 		\begin{align*}
 			&\L^1(\bc^{0},\dots,\bc^{M})=
 			\begin{pmatrix}
-				\bc^M-\bc^0 -\Delta t \beta^M F(\bc^0) \\
+				\bc^M-\bc^0 +\Delta t \beta^M F(\bc^0) \\
 				\vdots\\
-				\bc^1-\bc^0 - \Delta t \beta^1  F(\bc^0) 
+				\bc^1-\bc^0 + \Delta t \beta^1  F(\bc^0) 
 			\end{pmatrix}
 		\end{align*}
 		\begin{itemize}
@@ -563,7 +562,7 @@ For $m=1,\dots, M$
 	
 \end{frame}
 
-\begin{frame}{Implicit simple DeC}
+\begin{frame}{Implicit simple DeC (Rosenbrock)}
 	Define $\L^1$ as
 			\begin{align*}
 		\L^1(\bc^{0},\dots,\bc^{M})&=\only<1>{
@@ -583,6 +582,19 @@ For $m=1,\dots, M$
 		\bc^1-\bc^0 - \Delta t \beta^1  \partial_{\bc} F(\bc^0) \bc^1
 \end{pmatrix}}
 	\end{align*}
+\end{frame}
+
+\begin{frame}{Implicit simple DeC (Rosenbrock)}
+			\begin{align*}
+				\L^{1,m}(\bc^{0},\dots,\bc^{M})&=
+				\bc^m-\bc^0 -\Delta t \beta^m \partial_{\bc} F(\bc^0) \bc^m \\
+				\L^{2,m}(\bc^{0},\dots,\bc^{M})&=
+		\bc^m-\bc^0 -\Delta t \sum_r \theta^m_r  F(\bc^r)
+	\end{align*}
+	\vspace{15cm}
+\end{frame}
+
+\begin{frame}{Implicit simple DeC (Rosenbrock)}
 \end{frame}
 
 \begin{frame}{DeC as RK}
@@ -614,9 +626,101 @@ $$\bc^{(k),m} -\bc^0 -\Delta t \sum_{r=0}^M\theta_r^m F(\bc^{(k-1),r})=0$$
 	\end{equation}
 \end{frame}
 
+\begin{frame}{Stability of (explicit) DeC}
+	Idea: study the RK version!
+\begin{equation}
+	u'=\lambda u \qquad \Re(\lambda)<0.
+\end{equation}
+\begin{equation}
+	u_{n+1}=R(\lambda \dt) u_n,\qquad	R(z) = 1+ z b^T (I-zA)^{-1} \mathbf{1},\qquad z=\lambda \dt
+\end{equation}
+Goal: find $z\in \mathbb C$ such that $\lvert R(z) \rvert< 1$. \\
+Recall: stability function for explicit RK methods is a polynomial, indeed the inverse of $(I-zA)$ can be written in Taylor expansion as
+\begin{equation}
+	(I-zA)^{-1} = \sum_{r=0}^{\infty} z^r A^s = I + zA + z^2A^2+\dots, 
+\end{equation} 
+and, since $A$ is strictly lower triangular, it is nilpotent.
+Hence, $R(z)$ is a polynomial in $z$ with degree at most equal to $S$.
+
+\end{frame}
+
+\begin{frame}{Stability of (explicit) DeC}
+	
+\begin{theorem}\label{th:RK_stab_functions}
+	If the RK method is of order $P$, then\begin{equation}\label{eq:RK_order}
+		R(z) = 1 + z + \frac{z^2}{2!} +\dots +\frac{z^P}{P!}+O(z^{P+1}).
+	\end{equation}
+\end{theorem}
+
+The first $P+1$ terms of the stability functions $R(\cdot)$ for explicit DeCs of order $P$ are known.
+\begin{theorem}\label{th:bDeC_equivalence} 
+	The stability function of any explicit DeC of order $P$ (with $P$ iterations) is
+	\begin{equation}
+		R(z) = \sum_{r=0}^{P} \frac{z^r}{r!}= 1 + z + \frac{z^2}{2!} +\dots +\frac{z^P}{P!}
+	\end{equation}
+	and does not depend on the distribution of the subtimenodes.
+\end{theorem}  
+\end{frame}
+
+
+\begin{frame}{Stability of (explicit) DeC}
+	\begin{block}{Proof (1/3)}
+				\begin{minipage}{0.4\textwidth}
+			\begin{equation*}
+			A= \begin{pmatrix}
+				0 & 0 & 0&  \dots &0 &0\\
+				\star & 0 & 0&  \dots & 0 &0\\
+				\star & \star & 0 & \dots & 0 &0\\
+				\star & 0& \star  & \dots & 0 &0\\
+				\vdots & \vdots & \vdots &\ddots &\vdots&\vdots \\
+				\star & 0 & 0 &\cdots   &\star &0
+			\end{pmatrix},
+		\end{equation*}
+	\end{minipage}
+	\begin{minipage}{0.55\textwidth}
+		Block structure of the matrix $A$\\
+		$\star$ are some non-zero block matrices and the 0 are some zero block matrices.\\
+		The number of blocks in each line and row of these matrices is $P$, the order of the scheme.
+	\end{minipage}
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}{Stability of (explicit) DeC}
+		\begin{block}{Proof (2/3)}
+	By induction, $A^k$ 
+	has zeros in the upper triangular part, in the main block diagonal, and in all the $k-1$ block diagonals below the main diagonal, i.e., $$(A^k)_{i,j} = 0 \quad, \text{if } i< j+k,$$ where the indexes here refer to the blocks.
+	Indeed, it is true that $A_{i,j}=0$ if $i<j+1$.
+	Now, let us consider the entry $(A^{k+1})_{i,j}$ with $i<j+k+1$, i.e., $i-k<j+1$. It is defined as
+	\begin{equation}
+		(A^{k+1})_{i,j} = \sum_{w} (A^{k})_{i,w} A_{w,j}.
+	\end{equation}
+	Now, we can prove that all the terms of the sum are 0. Let $w<j+1$, then $A_{w,j}=0$ because of the structure of $A$; while, if $w\geq j+1 >i-k$, we have that $i<w+k$, so $(A^k)_{i,w} = 0$ by induction. 
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Stability of (explicit) DeC}
+	\begin{block}{Proof (3/3)}
+		In particular, this means that $A^{P}=\matz$, because $i$ is always smaller than $j+P$ as $P$ is the number of the block matrices that we have.
+		Hence, 
+		\begin{equation}
+			(I-zA)^{-1}=\sum_{r=0}^{\infty} z^rA^s =\sum_{r=0}^{P-1} z^rA^s = I + zA + z^2A^2+\dots + z^{P-1}A^{P-1}. 
+		\end{equation}
+		Plugging this result into $R(z) = 1+ z b^T (I-zA)^{-1} \mathbf{1}$,
+		the stability function $R(z)$ is a polynomial of degree $P$, the order of the scheme. 
+		All terms of order lower or equal to $P$ must agree with the expansion of the exponential function, so it must be
+		\begin{equation}
+			R(z) = \sum_{r=0}^{P} \frac{z^r}{r!}= 1 + z + \frac{z^2}{2!} +\dots +\frac{z^P}{P!}.
+		\end{equation}
+		Note: no assumption on the distribution of the subtimenodes.
+	\end{block}
+\end{frame}
+
 \begin{frame}{CODE}
 \begin{itemize}
-	\item Choice of order
+	\item Choice of iterations ($P$) and order
 	\item Choice of point distributions $t^0, \dots, t^M$
 	\item Computation of $\theta$
 	\item Loop for timesteps
@@ -725,12 +829,13 @@ Reconstruction step
 \begin{itemize}
 \item Convergence?
 \item How many steps $K$?
+\item Accuracy $\L^2$?
 \end{itemize}
 
 \end{frame}
 
 \begin{frame}{ADER 2nd order}
-	Example with 2 Gauss Legendre points and 2 iterations
+	Example with 2 Gauss Legendre points, Lagrange polynomials and 2 iterations
 
 	Let us consider the timestep interval $[t^n,t^{n+1}]$, rescaled to $[0,1]$. 
 	
@@ -770,7 +875,7 @@ Reconstruction step
 	Finally, use $\bbc^{(k+1)}$ to reconstruct the solution at the time step $t^{n+1}$:
 	
 	\begin{align*}
-		\alpha^{n+1} &= \vec{\phi}(1)^T \bbc^{(k+1)}.
+		\bc^{n+1} &= \vec{\phi}(1)^T \bbc^{(k+1)}=\bc^n + \int_{T^n}\bphi(t)^T dt\, F(\bbc^{(k)}).
 	\end{align*}
 	
 	
@@ -778,8 +883,11 @@ Reconstruction step
 
 \begin{frame}{CODE}
 	\begin{itemize}
+		\item Choice: $\phi$ Lagrangian basis functions
+		\item Different subtimesteps: Gauss-Legendre, Gauss--Lobatto, equispaced
 		\item Precompute $\M$
-		\item Precompute the rhs vector part using quadratures after a further approximation $$\vec{r}(\bbc) =  \bphi(t^{n}) \bc^n + \int_{T^n} \bphi(t)  F(\bphi(t)^T\bbc)  dt \approx \bphi(t^{n}) \bc^n + \underbrace{\int_{T^n} \bphi(t)\bphi(t)^Tdt}_{\text{Can be stored}}  F(\bbc)  $$
+		\item Precompute the rhs vector part using quadratures after a further approximation 
+		$$\vec{r}(\bbc) =  \bphi(t^{n}) \bc^n + \int_{T^n} \bphi(t)  F(\bphi(t)^T\bbc)  dt \approx \bphi(t^{n}) \bc^n + \underbrace{\int_{T^n} \bphi(t)\bphi(t)^Tdt}_{\text{Can be stored}}  F(\bbc)  $$
 		\item Precompute the reconstruction coefficients $\bphi(1)^T$
 	\end{itemize}
 \end{frame}
@@ -961,20 +1069,209 @@ DeC as ADER
 	
 \end{frame}
 
-\section{Simulations}
-\begin{frame}{A--Stability}
-$$y'(t) = \lambda y(t)	\qquad y(0) = 1
-$$
-\begin{figure}[h] 
-    \centering
-    \includegraphics[width=0.45\textwidth, trim={30 20 30 20},clip]{stab_glb.pdf}
-    \includegraphics[width=0.45\textwidth, trim={30 20 30 20},clip]{ader_all.pdf}
-    \caption{Stability region}
-    \label{fig:stab}
-\end{figure}
-
+\section{ADER stability and accuracy}
+\begin{frame}{Stability}
+	Since ADER can be written as a DeC, the stability functions are 
+	given by the same formula as for DeC and the stability regions are the following.
+	\begin{figure}[h] 
+		\centering
+		\includegraphics[width=0.45\textwidth, trim={30 20 30 20},clip]{stab_glb.pdf}
+		\includegraphics[width=0.45\textwidth, trim={30 20 30 20},clip]{ader_all.pdf}
+		\caption{Stability region}
+		\label{fig:stab}
+	\end{figure}
 \end{frame}
 
+\begin{frame}{Accuracy of ADER $\L^2$ operators}
+	The two things that determine the accuracy of the ADER method are the iterations $P$ and the accuracy of $\L^2$.
+
+	\begin{block}{Accuracy of ADER $\L^2$ for different distributions}
+		\begin{itemize}
+			\item Equispaced: boring, minimum accuracy possible $M+1$ nodes $p=M+1$
+			\item Guass--Lobatto: this generates the LobattoIIIC methods, $M+1$ nodes $p=2M$
+			\item Gauss--Legendre: this does not generate Gauss methods, $M+1$ nodes $p=2M+1$ 
+		\end{itemize}
+		
+	\end{block}
+
+\end{frame}
+\begin{frame}{$\L^2$ ADER as RK}
+	Here, we see $\L^2$ as an implicit RK
+	\begin{align*}
+		&\L^{2,m}(\bbc) = \M^m_j \bc^{(j)} - \bphi^m(t^{n}) \bc^n - \underbrace{\int_{T^n} \bphi^m(t) 
+		 \bphi(t)_j dt}_{\dt \RHS_j^m}  F(\bc^{(j)})=0\\
+		&\tilde\L^{2,z}(\bbc) =  \bc^{(z)} - (\M^{-1})_m^z \bphi^m(t^{n})
+		 \bc^n - \dt (\M^{-1})_m^z\RHS_j^m F(\bc^{(j)}) =0 \\
+		 &\bc^{(z)} = 
+		 \bc^n + \dt a_{z,j} F(\bc^{(j)})   
+	\end{align*}
+	\begin{itemize}
+		\item $a_{mj} = (\M^{-1})_m^z\RHS_j^m$
+		\item Prove that  $(\M^{-1})_m^z \bphi^m(t^{n})= 1$ for every $z$
+		\item $c^m= \sum_r a_{mr} = t^m$
+		\item $b_r = \frac{1}{\dt}\int_{T^m} \phi_r(t)dt =w_r$ quadrature weights
+	\end{itemize}
+\end{frame}
+\begin{frame}{$\L^2$ ADER as RK}
+	
+\end{frame}
+\begin{frame}{$\L^2$ ADER as RK}
+	
+\end{frame}
+
+\begin{frame}{BCD conditions (Butcher 1964)}
+	Define the conditions
+\begin{align}
+	B(p):\qquad  & \sum_{i=1}^s b_i c_i^{z-1}=\frac1z,\qquad & z=1,\dots,p;\\
+	C(\eta):\qquad  & \sum_{j=1}^s a_{ij} c_j^{z-1}=\frac{c_i^z}{z},\qquad & 
+	i=1,\dots,s,\,z=1,\dots,\eta;\\
+	D(\zeta):\qquad  & \sum_{i=1}^s b_i c_i^{z-1}a_{ij}=\frac{b_j}{z}(1-c_j^z),
+	\qquad &j=1,\dots,s,\, z=1,\dots,\zeta. 
+\end{align}
+\begin{theorem}[Butcher 1964]
+	If the coefficients $b_i,c_i,a_{ij}$ of a RK scheme satisfy $B(p)$,
+    $C(\eta)$ and $D(\zeta)$ with $p\leq \eta +\zeta +1$ and $p\leq 2\eta +2$, 
+	then the method is of order $p$.
+\end{theorem}
+\end{frame}
+
+\begin{frame}{$C(s-1)$ $D(s-1)$}
+	\begin{lemma}
+		$\mathcal{L}^2$ operator of ADER defined by Gauss--Lobatto or Gauss--Legendre points and quadrature (they coincide) with $s=M+1$ stages satisfies
+		 $C(s-1)$ and $D(s-1)$.
+	\end{lemma}
+	\begin{block}{Proof (1/4).}
+		Interpolation with $\phi^j$ is exact for polynomials
+		 of degree $s-1$.\\
+		The quadrature is exact for polynomials of degree $2s-3$.\\
+		Recall that $\underline{\underline{A}} = \M \RHS$, Condition $C(s-1)$  reads  \vspace*{-2mm}
+		\begin{equation*}
+			\underline{\underline{A}}\, \underline{c^{z-1}}  = \frac{1}{z}\underline{c^z} 
+			\Longleftrightarrow \RHS \, 
+			\underline{c^{z-1}}= \frac{1}{z} \M\,\underline{c^z}
+			\Longleftrightarrow \underline{\mathcal{X}}:=\RHS \, 
+			\underline{c^{z-1}}- \frac{1}{z} \M\,\underline{c^z}=\underline{0}, 
+			\qquad z=1,\dots, s-1.\vspace*{-2mm}
+		\end{equation*}
+		Recall $b_m=t^m$, $c_m=w_m$, $\RHS_{i,j}=\delta_{i,j}w_i$ and the definition of $\M$\vspace*{-2mm}
+		\begin{equation*}
+			\mathcal{X}_m:=w_m (t^{m})^{z-1} - \frac{1}{z} \left( \phi^m (1) \phi^j (1) (t^j)^z -
+			 \int_0^1 \frac{d}{d\xi}\phi^m(\xi) \phi^j(\xi)(t^j)^z  d\xi  \right).
+		\end{equation*}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\begin{block}{Proof (2/4).}
+		Now, the interpolation of $t^z$ with $z\leq s-1$ with basis functions $\phi^j$ is exact. Hence, we can substitute $\phi^j(\xi)(t^j)^z  = \xi^z$ for all $z=1,\dots, s-1$, obtaining
+		\begin{equation*}
+			\mathcal{X}_m= w_m (t^{m})^{z-1} - \frac{1}{z} \left( \phi^m (1) 1^z - \int_0^1 \frac{d}{d\xi}\phi^m(\xi)\xi^z  d\xi  \right).
+		\end{equation*}
+		Using the exactness of the quadrature for polynomials of degree $2s-3$, both true for Gauss--Lobatto and Gauss--Legendre, we know that the previous integral is exactly computed as $\frac{d}{d\xi}\phi^m(\xi)$ is of degree at most $s-2$ and $\xi^z$ is at most $s-1$. So, we can use integration by parts and obtain
+		\begin{equation*}
+			\mathcal{X}_m= w_m (t^{m})^{z-1} - \frac{1}{z} \left( \phi^m (0) 0^z + \int_0^1 \phi^m(\xi)\frac{d}{d\xi}\xi^z  d\xi  \right) =  w_m (t^{m})^{z-1} - \int_0^1 \phi^m(\xi)\xi^{z-1}  d\xi =0
+		\end{equation*}
+		by the exactness of the quadrature rule and the definition of $w_m$. Note that the condition is sharp, since the interpolation is not anymore exact for $z=s$, hence $C(s)$ is not satisfied.\\
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\begin{block}{Proof (3/4).}
+		To prove $D(s-1)$, we write explicitly the condition in matricial form, for all $z=1,\dots, s-1$
+			\begin{align*}
+				\underline{bc^{z-1}} \, \underline{\underline{A}} = \frac{1}{z} \underline{b(1-c^z)} 
+				\Longleftrightarrow \underline{bc^{z-1}} \, \M^{-1} \, \RHS 
+				= \frac{1}{z} \underline{b(1-c^z)}
+				\Longleftrightarrow \underline{bc^{z-1}}  = \frac{1}{z} \underline{b(1-c^z)}\,
+				\RHS^{-1}\, \M.
+			\end{align*}
+		Note that $b^m=w_m $ and $\RHS_r^m = w_m \delta_r^m$, 
+		so $\underline{b(1-c^z)}\,\RHS^{-1}=\underline{(1-c^z)}$. It is left to prove that
+		\begin{align*}
+		&	\mathcal{Y}:=\underline{bc^{z-1}}-\frac1z\underline{(1-c^z)}\M =\underline{0}.\\
+		&	\mathcal{Y}_m= w_m (t^m)^{z-1} - \frac1z\sum_{j=1}^s \left(1-(t^j)^z\right) \left(\phi^j(1)\phi^m(1) - \int_0^1 \frac{d}{d\xi}\phi^j(\xi)\phi^m(\xi) d\xi  \right).
+		\end{align*}
+			\end{block}
+\end{frame}
+
+\begin{frame}
+	\begin{block}{Proof (4/4).}
+		Let us observe that, since $z\leq s-1$, the polynomial is exactly represented by the Lagrangian interpolation $t^z = \sum_{j=1}^s \phi(t) (t^m)^z$. Hence, using the exactness of the quadrature for polynomials of degree at most $2s-3$, we have
+		 \begin{align*}
+			 \mathcal{Y}_m=& w_m (t^m)^{z-1} - \frac1z \left(1-(1)^z\right) \phi^m(1) + \frac1z\int_0^1 \frac{d}{d\xi}\left(1-(\xi)^z\right)\phi^m(\xi) d\xi \\
+			 =&  w_m (t^m)^{z-1} -   \frac1z\int_0^1 z\, \xi^{z-1}\phi^m(\xi) d\xi  =w_m (t^m)^{z-1}-w_m (t^m)^{z-1}=0 .
+		 \end{align*}
+		Hence, ADER-Legendre and ADER-Lobatto satisfy $D(s-1)$. Note that the condition is sharp, since the interpolation is not anymore exact for $z=s$, hence $D(s)$ is not satisfied.
+	\end{block}
+\end{frame}
+
+
+\begin{frame}{ADER Gauss--Legendre $\L^2$}
+	\begin{remark}[ADER-Legendre is no collocation method]
+		From the proof of previous Lemma, we can observe that ADER-Legendre methods do not satisfy $C(s)$, hence, the methods are not collocation methods and they do not coincide with Gauss--Legendre implicit RK methods.
+	\end{remark}
+	\begin{theorem}
+		$\L^2$ of ADER with Gauss--Legendre is of order $2s-1$.
+	\end{theorem}
+	\begin{proof}
+		 ADER-Legendre with $s=M+1$ stages satisfies $B(2s)$ for the quadrature rule and, 
+		 hence, it satisfies $B(2s-1)$. For previous Lemma it also satisfies $C(s-1)$ and $D(s-1)$. 
+		 Hence, Butcher's (1964) Theorem ($p\leq \eta +\zeta +1$ and $p\leq 2\eta +2$) guarantees that the method is of order $2s-1$, 
+		 since it is satisfied with $p=2s-1$ and $\eta=\zeta=s-1$.
+	\end{proof}
+\end{frame}
+	
+\begin{frame}{ADER Gauss--Lobatto $\L^2$}
+	\begin{theorem}
+		$\L^2$ of ADER with Gauss-Lobatto is of order $2s-2$.
+	\end{theorem}
+	\begin{proof}
+		The condition for $B(2s-2)$ is satisfied as $(c,b)$ is the Gauss--Lobatto quadrature 
+		with order $2s-2$.
+		Previous Lemma  guarantees that ADER-Lobatto satisfies $B(2s-2)$, $C(s-1)$ and $D(s-1)$, 
+		so Butcher's (1964) Theorem  ($p\leq \eta +\zeta +1$ and $p\leq 2\eta +2$) is satisfied
+		for order $p=2s-2$ and $\eta = \zeta=s-1$.
+	\end{proof}	
+\end{frame}
+\begin{frame}{ADER Gauss--Lobatto $\L^2$}
+	\begin{theorem}
+		$\L^2$ of ADER with Gauss-Lobatto is LobattoIIIC.
+	\end{theorem}
+
+	The Lobatto IIIC method is defined using the condition
+	\begin{equation}\label{eq:conditionLobattoIIIC}
+		a_{i1}=b_1 \qquad \text{for }i=1,\dots,s.
+	\end{equation}
+
+
+\begin{lemma}\label{lem:conditionLobattoIIIC}
+	$\L^2$ of ADER with Gauss-Lobatto satisfies \eqref{eq:conditionLobattoIIIC}.
+\end{lemma}
+	\begin{theorem}[Chipman 1971]\label{th:uniquenessLobatto}
+		Lobatto IIIC schemes (in particular RK $a_{ij}$) are uniquely determined 
+		by Gauss--Lobatto quadrature rule $(c,b)$, condition \eqref{eq:conditionLobattoIIIC} 
+		and by $C(s-1)$. 
+	\end{theorem}
+	
+\end{frame}
+
+\begin{frame}{ADER Gauss--Lobatto $\L^2$}
+	\begin{lemma}\label{lem:conditionLobattoIIIC}
+		$\L^2$ of ADER with Gauss-Lobatto satisfies \eqref{eq:conditionLobattoIIIC}.
+	\end{lemma}
+	\begin{proof}
+		\begin{align*}
+			a_{i1}=\sum_j (\M^{-1})_{ij}\R_{j1}=&b_1 = w_1 \Longleftrightarrow	\\
+			\sum_{i,j}\M_{ki}(\M^{-1})_{ij}\R_{j1}=&\sum_i \M_{ki}w_1 \Longleftrightarrow \\
+			\delta_{k1}w_1=\R_{k1}=&\sum_i \M_{ki}w_1\\
+			\sum_i \M_{ki}w_1=\phi^m(1) w_1 -  \int_0^1 \frac{d}{dt}\phi^m(\xi)  
+			 w_1 dt  &= w_1 \phi^m(0)  = w_1 \delta_{m,1}.
+		\end{align*}
+		
+	\end{proof}
+\end{frame}
+
+\section{Simulations}
 \begin{frame}{Convergence}
 
 \begin{figure}
