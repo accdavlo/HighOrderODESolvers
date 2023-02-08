@@ -149,7 +149,6 @@
 \def\STC{T^n\times V_i}
 \def\SC{V_i}
 \def\TC{T^n}
-\usepackage{bbm}
 \def\L{\mathcal{L}}
 \def\I{\mathcal{I}}
 \def\R{\mathbb{R}}
@@ -163,7 +162,12 @@
 \def\bphi{\underline{\phi}}
 \def\M{\underline{\underline{\mathrm{M}}}}
 \def\RHS{\underline{\underline{\mathrm{R}}}}
-
+\def\bE{F}
+\def\bG{F}
+\newcommand{\uvec}[1]{\ww{#1}}
+\def\vecbeta{\ww{\beta}}
+\def\vecz{\ww{0}}
+\def\matz{\ww{\ww{0}}}
 %Colors 
 \definecolor{darkspringgreen}{rgb}{0., 0.55, 0.3}
 \definecolor{dartmouthgreen}{rgb}{0.05, 0.5, 0.06}
@@ -173,3 +177,28 @@
 \definecolor{emerald}{rgb}{0.31, 0.78, 0.47}
 \definecolor{uclagold}{rgb}{1.0, 0.7, 0.0}
 \definecolor{cadmiumorange}{rgb}{0.93, 0.53, 0.18}
+
+
+
+
+% Evidenziato
+\newcommand{\TODO}[1]{{\color{red}#1}}
+\newcommand{\highlight}[1]{\textbf{\color{bluemathlab}#1}}
+\newcommand{\highlightB}[1]{\textbf{\color{black!15!orangemathlab}#1}}
+\newcommand{\mathhighlight}[1]{\color{bluemathlab}#1}
+\newcommand{\mathhighlightB}[1]{\color{black!15!orangemathlab}#1}
+
+% Framebreaks: move continuation count from subtitle to title
+\setbeamertemplate{frametitle continuation}[from second][]
+\makeatletter 
+\long\def\beamer@@frametitle[#1]#2{% 
+	\beamer@ifempty{#2}{}{% 
+		\gdef\insertframetitle{#2\ifnum\beamer@autobreakcount>1\relax{}\space(\insertcontinuationcountroman)\fi}% 
+		\gdef\beamer@frametitle{#2}% 
+		\gdef\beamer@shortframetitle{#1}% 
+	}% 
+}
+\makeatother 
+
+\setbeamercolor{blockcolor1}{fg=black,bg=bluemathlab!10}
+\setbeamercolor{blockcolor2}{fg=black,bg=orangemathlab!10} 

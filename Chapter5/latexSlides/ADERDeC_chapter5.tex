@@ -1,49 +1,77 @@
-\documentclass[aspectratio=169]{beamer}
+\PassOptionsToPackage{subsection=false}{beamerouterthememiniframes}
+\documentclass[9pt,compress,t,aspectratio=169]{beamer}
+\usetheme[
+	bullet=circle,
+	alternativetitlepage=true,
+	titleline=true,
+	titlepagelogo=img/sissa_and_mathlab,
+]{mathlab}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{verbatim} % per comment
+\usepackage{lmodern} % font più chiaro
+\usepackage{ragged2e}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage[thicklines]{cancel}
+\usepackage{xcolor}
+\usepackage{wasysym}
+\usepackage{units}
+\usepackage{tikzsymbols}
+\usepackage{bbm}
 
 
-\mode<presentation>
-{
-  \usetheme{Madrid}%\usetheme{uzhneu-en}
-  \setbeamercovered{transparent}
-  %\usecolortheme{crane}
-\usefonttheme{professionalfonts}
+\usepackage{multimedia}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
 
+\usetikzlibrary{shadows}
+
+\usetikzlibrary{decorations.pathreplacing,calligraphy}
+
+%\usepackage{media9}%
+\newcommand\Ccancel[2][black]{\renewcommand\CancelColor{\color{#1}}\cancel{#2}}
+\newcommand{\cfbox}[2]{%
+    \colorlet{currentcolor}{.}%
+    {\color{#1}%
+    \fbox{\color{currentcolor}#2}}%
 }
+
+
+\newcommand{\bad}{\Sadey[2][red]}
+\newcommand{\good}{\Smiley[2][green]}
+
+\newcommand{\one}{$[1]$}
+\newcommand{\two}{$[2]$}
+\newcommand{\three}{$[3]$}
+
+
 \setbeamertemplate{navigation symbols}{}
 
-%\usepackage[numbers]{natbib}
-\usepackage{graphicx} %include i grafici
 \graphicspath{{pictures/img/}}
-\usepackage[english]{babel}
-\usepackage[normal]{subfigure}
 
-\usepackage{amsthm}
+
+
 \usepackage{amssymb}
-\usepackage{amsmath}
 \usepackage{cancel}
 \usepackage{comment}
 %\DeclareMathOperator{\supp}{supp}
 \usepackage{mathrsfs}
-\usepackage{latexsym}
-\usepackage{graphicx}
-\DeclareGraphicsExtensions{.pdf,.jpg}
-\usepackage{subfigure}
+%\usepackage{latexsym}
+\DeclareGraphicsExtensions{.pdf,.jpg,.png}
 \usepackage{hyperref}
-%\hypersetup{colorlinks=true,linkcolor=blue}
-\usepackage{amsfonts}
-\usepackage{bm}
-\usepackage{algorithm2e}
 
-\usepackage[style=authortitle,backend=bibtex]{biblatex}
-%\bibliography{biblio}
 
-\usepackage[utf8]{inputenc}
 
-\usepackage{tikz}
-
-\usepackage{bbm}
-\usepackage{times}
-\usepackage[T1]{fontenc}
+%\usepackage{times}
 
 
 \newtheorem{induction_hyp}{Induction Hypothesis}
@@ -54,14 +82,17 @@
 \include{config}
 \title[ADER vs DeC]{ADER and DeC: \\ arbitrarily high order (explicit)\\ methods for PDEs and ODEs} 
 
-\author[D. Torlo]{Davide Torlo}
-
-\institute[SISSA]
-{SISSA Mathlab}
-
+\author[D. Torlo]{\Large Davide Torlo}
+\institute[SISSA mathLab]{%
+\vspace{-3mm}\\%
+\small $^*$MathLab, Mathematics Area, SISSA International School for Advanced Studies, Trieste, Italy\\
+\href{https://www.davidetorlo.it}{\underline{davidetorlo.it}\vspace{-3mm}}
+}
 
 \date[]
-{\small Based on: Han Veiga, M., Öffner, P. \& Torlo, D. \textit{DeC and ADER: Similarities, Differences and a Unified Framework.} J Sci Comput 87, 2 (2021). https://doi.org/10.1007/s10915-020-01397-5
+{ \small Based on: Han Veiga, M., Öffner, P. \& Torlo, D. 
+\textit{DeC and ADER: Similarities, Differences and a Unified Framework.} 
+J Sci Comput 87, 2 (2021). \url{https://doi.org/10.1007/s10915-020-01397-5}
 }
 
 
@@ -1161,7 +1192,7 @@ DeC as ADER
 	\end{block}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{$C(s-1)$ $D(s-1)$}
 	\begin{block}{Proof (2/4).}
 		Now, the interpolation of $t^z$ with $z\leq s-1$ with basis functions $\phi^j$ is exact. Hence, we can substitute $\phi^j(\xi)(t^j)^z  = \xi^z$ for all $z=1,\dots, s-1$, obtaining
 		\begin{equation*}
@@ -1175,7 +1206,7 @@ DeC as ADER
 	\end{block}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{$C(s-1)$ $D(s-1)$}
 	\begin{block}{Proof (3/4).}
 		To prove $D(s-1)$, we write explicitly the condition in matricial form, for all $z=1,\dots, s-1$
 			\begin{align*}
@@ -1194,7 +1225,7 @@ DeC as ADER
 			\end{block}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{$C(s-1)$ $D(s-1)$}
 	\begin{block}{Proof (4/4).}
 		Let us observe that, since $z\leq s-1$, the polynomial is exactly represented by the Lagrangian interpolation $t^z = \sum_{j=1}^s \phi(t) (t^m)^z$. Hence, using the exactness of the quadrature for polynomials of degree at most $2s-3$, we have
 		 \begin{align*}
@@ -1267,11 +1298,46 @@ DeC as ADER
 			\sum_i \M_{ki}w_1=\phi^m(1) w_1 -  \int_0^1 \frac{d}{dt}\phi^m(\xi)  
 			 w_1 dt  &= w_1 \phi^m(0)  = w_1 \delta_{m,1}.
 		\end{align*}
-		
 	\end{proof}
 \end{frame}
 
+
 \section{Simulations}
+
+\begin{frame}{Applications}
+	\begin{minipage}{0.48\textwidth}
+		\begin{block}{Usages}
+			\begin{itemize}
+				\item Hyperbolic PDEs as explicit iterative methods
+				 (ADER: Toro, Dumbser, Klingenberg, Boscheri; DeC: Abgrall, Ricchiuto)
+				\item IMEX solvers for hyperbolic with stiff sources (ADER: Dumbser, Boscheri; DeC: Abgrall, Torlo)
+				\item IMEX solvers for hyperbolic with viscosity (treated implicitly) as compressible Navier Stokes (DeC: Minion, Dumbser, Zeifang)
+			\end{itemize}
+		\end{block}
+		\begin{block}{IMEX}
+			$\partial_t u = F(u) + S(u)$ \\ $S(u)$ stiff to be treated implicitly
+		\end{block}
+	\end{minipage}\hfill
+	\begin{minipage}{0.48\textwidth}
+		\begin{block}{Advantages}
+			\begin{itemize}
+				\item Arbitrary high order
+				\item Unique framework to have matching between implicit and explicit terms
+				\item Easy to code
+				\item Iterative solver automatically included
+			\end{itemize}
+		\end{block}
+
+		\begin{block}{Disadvantages}
+			\begin{itemize}
+				\item Explicit solver: many many stages
+				\item Implicit: many stages
+				\item Explicit: not amazing stability property (wrt SSP RK e.g.)
+			\end{itemize}
+		\end{block}
+	\end{minipage}
+\end{frame}
+
 \begin{frame}{Convergence}
 
 \begin{figure}
@@ -1332,6 +1398,734 @@ Convergence curves for ADER and DeC, varying the approximation order and colloca
 
 \end{frame}
 
+
+\section{Efficient DeC (ADER)}
+\begin{frame}{Reduce computational cost for explicit DeC}
+	\begin{block}{Literature}
+		\small
+		\begin{itemize}
+			\item \textit{Micalizzi, L., Torlo, D. A new efficient explicit Deferred Correction framework: analysis and applications to hyperbolic PDEs and adaptivity.}
+			\href{https://arxiv.org/abs/2210.02976}{arxiv.org/abs/2210.02976}
+			\item \textit{Micalizzi, L., Torlo, D., Boscheri, W. Efficient iterative arbitrary high order methods: an adaptive bridge between low and high order.} \href{https://arxiv.org/abs/2212.07783}{arxiv.org/abs/2212.07783} 
+		\end{itemize}
+	\end{block}	
+
+	\begin{block}{Goal}
+		Reduce computational costs of explicit DeC.
+	\end{block}
+	
+\end{frame}
+
+\begin{frame}{DeC as RK for ODEs}
+	\begin{beamercolorbox}[sep=1em,wd=\textwidth]{blockcolor1}
+		\begin{align*}
+			&\L^1(\bbc^{(p)})=\L^1(\bbc^{(p-1)})-\L^2(\bbc^{(p-1)})\text{ with }p=1,\dots,P.\\
+			& \bc^{m,(p)} = \bc^{0} + \sum_{r=0}^M \theta^m_r F(t^r,\bc^{r,(p-1)}), \qquad \forall m=1,\dots, M,\; p=1,\dots,P
+		\end{align*}
+	\end{beamercolorbox}
+	\only<2->{
+	\begin{minipage}{0.35\textwidth}
+	\begin{tikzpicture}[scale=0.8]
+			\tikzset{dot/.style={fill=black,circle}}
+			
+			\foreach\l[count=\y] in {0,1,2,M}
+			{
+				\draw (1,-\y) -- (3,-\y);
+				\draw[dashed] (3,-\y) -- (5,-\y);
+				\node at (0.6,-\y){$t^{\l}$};
+				\foreach\z[count=\x] in {0,1,2,p,P}
+				{
+					\only<3->{\ifthenelse{\y=1 \OR \x=1 \AND \NOT \x=\y}{\fill (\x,-\y) circle (1mm) node[anchor=south west] {$\bc^{\l,(\z)}$};}{\fill[red] (\x,-\y) circle (1mm) node[anchor=south west] {$\bc^{\l,(\z)}$};}}
+					\only<2>{\fill (\x,-\y) circle (1mm) node[anchor=south west] {$\bc^{\l,(\z)}$};}
+				}
+			}
+			\only<4->{\fill (5,-4) circle (1mm) node[anchor=south west] {$\bc^{M,(P)}$};}
+			\foreach\l[count=\x] in {0,1,2,p,P}
+			{
+				\draw (\x,-1) -- (\x,-3);
+				\draw[dashed] (\x,-3) -- (\x,-4);
+				\node at (\x,-4.5){$\l$};
+			}
+			
+		\end{tikzpicture}
+	\end{minipage}	
+	\begin{minipage}{0.63\textwidth}
+	%\only<3>{
+	%\begin{table}
+	%	\centering
+	%	\resizebox{\columnwidth}{!}{
+	%		\begin{tabular}{|c||ccccccc|l|}
+	%			\hline
+	%			$\uvec{c}$& $\bu^0$ & $\bbu^{(1)}$& $\bbu^{(2)}$&$\bbu^{(3)}$& $\cdots$& $\bbu^{(M)}$& $\bbu^{(M+1)}_{:M-1}$&A\\
+	%			\hline
+	%			$0$ & 0 & &&&&&&$\bu^0$\\
+	%			$\vecbeta_{1:}$& $\vecbeta_{1:}$ & $\matz$ &&&&&&$\bbu^{(1)}$ \\
+	%			$\vecbeta_{1:}$& $\Theta_{1:,0}$ & $(\Theta-\alpha \Gamma)_{1:,1:}$ &$\alpha \Gamma_{1:,1:}$ & $\matz$&&&&$\bbu^{(2)}$\\
+	%			$\vecbeta_{1:}$& $\Theta_{1:,0}$&  $\matz$& $(\Theta-\alpha \Gamma)_{1:,1:}$ &$\alpha \Gamma_{1:,1:}$ & $\matz$&&&$\bbu^{(3)}$\\
+	%			&$\vdots$   &$\vdots$ &&$\ddots$& $\ddots$&&& $\vdots$\\
+	%			&$\vdots$   &$\vdots$ &&&$\ddots$& $\ddots$&& $\vdots$\\
+	%			$\vecbeta_{1:M-1}$ &$\Theta_{1:M-1,0}$ &  $\matz$&$\cdots$&$\cdots$&$\matz$&$(\Theta-\alpha \Gamma)_{1:M-1,1:}$&$\alpha \Gamma_{1:M-1,1:M-1}$ &$\bbu^{(M+1)}_{:M-1}$\\ \hline\hline
+	%			$\uvec{b}$&$\Theta_{M,0}$ &  $\vecz$&$\cdots$&$\cdots$&$\vecz$&$(\Theta-\alpha \Gamma)_{M,1:}$&$\alpha \Gamma_{M,1:M-1}$ & $\bbu^{M,(M+1)}$\\ \hline
+	%	\end{tabular}}
+	%	\caption{RK structures for the original $\alpha$DeC with equispaced subtimenodes, $\uvec{c}$ at the left $\uvec{b}$ at the bottom, $A$ in the middle. We add on top and right sides the reference to the iteration steps \label{tab:RKalphaDeC}}
+	%\end{table}}
+	\visible<4->{
+	%	\begin{table}
+			\centering
+			\resizebox{\columnwidth}{!}{
+			\begin{tabular}{|c||ccccccc|l|}
+				\hline
+				$\uvec{c}$& $\bu^0$ & $\bbu^{(1)}$& $\bbu^{(2)}$&$\bbu^{(3)}$& $\cdots$& $\bbu^{(M-1)}$& $\bbu^{(M)}$&A\\
+				\hline
+				$0$ & 0 & &&&&&&$\bu^0$\\
+				$\vecbeta_{1:}$& $\vecbeta_{1:}$ & $\matz$ &&&&&&$\bbu^{(1)}$ \\
+				$\vecbeta_{1:}$& $\Theta_{1:,0}$ & $\Theta_{1:,1:}$ & $\matz$&&&&&$\bbu^{(2)}$\\
+				$\vecbeta_{1:}$& $\Theta_{1:,0}$&  $\matz$& $\Theta_{1:,1:}$ & $\matz$&&&&$\bbu^{(3)}$\\
+				&$\vdots$   &$\vdots$ &&$\ddots$& $\ddots$&&& $\vdots$\\
+				&$\vdots$   &$\vdots$ &&&$\ddots$& $\ddots$&& $\vdots$\\
+				$\vecbeta_{1:}$ &$\Theta_{1:,0}$ &  $\matz$&$\cdots$&$\cdots$&$\matz$&$\Theta_{1:,1:}$&$\matz$&$\bbu^{(M)}$\\ \hline\hline
+				$\uvec{b}$&$\Theta_{M,0}$ &  $\vecz$&$\cdots$&$\cdots$&$\cdots$&$\vecz$&$\Theta_{M,1:}$&$\bbu^{M,(M+1)}$\\ \hline
+			\end{tabular}}
+			%\caption{RK structures for the original bDeC with equispaced subtimenodes, $\uvec{c}$ at the left $\uvec{b}$ at the bottom, $A$ in the middle. We add on top and right sides the reference to the iteration steps \label{tab:RKbDeC}}
+	%\end{table}
+	}
+	\end{minipage}}
+	
+	\end{frame}
+
+	\begin{frame}{Costs}
+		\begin{beamercolorbox}[sep=1em,wd=\textwidth]{blockcolor1}
+			\centering
+			\Large \highlightB{Large costs!}
+		\end{beamercolorbox}
+	\vspace{5mm}\pause
+	
+	\begin{minipage}{0.4\textwidth}
+		\begin{beamercolorbox}[sep=1em,wd=\textwidth]{blockcolor1}
+		\begin{itemize}
+			\item DeC $S= M\cdot (P-1)+1$
+			\begin{itemize}
+				\item DeC equi $S=(P-1)^2+1$
+				\item DeC GLB $S=\left\lceil \frac{P}{2} \right\rceil(P-1)+1$
+			\end{itemize}
+	%		\item sDeC $S= M\cdot P$ 
+	%		\begin{itemize}
+	%			\item sDeC equi $S=P^2-P$
+	%			\item sDeC GLB $S=\left\lceil \frac{P}{2} \right\rceil \cdot P$
+	%		\end{itemize}
+		\end{itemize}
+	\end{beamercolorbox}
+	\end{minipage}
+	\begin{minipage}{0.28\textwidth}
+		\centering Equispaced
+		
+		\begin{tabular}{|c|c||c|}\hline
+			$P$ &$M$ & DeC\\ \hline
+			2&1&2\\
+			3&2&5\\
+			4&3&10\\
+			{\color{red}5}&4&{\color{red}17}\\
+			6&5&26\\
+			7&6&37\\
+			8&7&50\\
+			9&8&65\\
+			10&9&82\\ \hline
+		\end{tabular}
+	\end{minipage}
+	\begin{minipage}{0.28\textwidth}
+		\centering Gauss--Lobatto
+		
+		\begin{tabular}{|c|c||c|}\hline
+			$P$ &$M$ & DeC\\ \hline
+			2&1&2\\
+			3&2&5\\
+			4&2&7\\
+			{\color{red}5}&3&{\color{red}13}\\
+			6&3&16\\
+			7&4&25\\
+			8&4&29\\
+			9&5&41\\
+			10&5&46\\ \hline
+		\end{tabular}
+	\end{minipage}
+	\vspace{5mm}
+	\pause
+	
+	\begin{beamercolorbox}[sep=1em,wd=\textwidth]{blockcolor2}
+		\centering
+		\Large \highlight{How can we save computational time?}
+	\end{beamercolorbox}
+	\end{frame}
+	
+	
+	%% econ
+	\section{An efficient Deferred Correction}
+	%main idea plots
+	
+	\begin{frame}{Idea for reduction of stages}
+		\begin{beamercolorbox}[sep=1em,wd=\textwidth]{blockcolor2}
+		\centering
+		\begin{tikzpicture}[scale=1]
+			\tikzset{dot/.style={fill=black,circle}}
+			\tikzset{straightness/.style={straightness, draw, 
+					minimum size=3pt, 
+					inner sep=0pt, outer sep=0pt}}
+			\tikzset{arrow/.style={
+					color=black,
+					draw=black,
+					-latex,
+					font=\fontsize{8}{8}\selectfont}}
+			\newcommand{\xa}{1}
+			\newcommand{\xb}{2.5}
+			\newcommand{\xc}{4}
+			\newcommand{\xd}{5.5}
+			\newcommand{\xe}{7}
+			\newcommand{\xf}{8.5}
+			
+			\newcommand{\ya}{5}
+			\newcommand{\yb}{4}
+			\newcommand{\yc}{3}
+			\newcommand{\yd}{2}
+			\newcommand{\ye}{1}
+			
+			\newcommand{\yf}{3.666666}
+			\newcommand{\yg}{2.333333}
+			
+			\only<1>{
+			\foreach\l[count=\y] in {4,3,2,1,0}
+			{
+				%\draw (1,\y) -- (8.5,\y);
+				\foreach\w/\z[count=\x] in {\xa/0,\xb/1,\xc/2,\xd/3,\xe/4, \xf/5}
+				{
+					\fill (\w,\y) circle (0.5mm) node[anchor=south west] {$\!\bu^{\l,(\z)}$};
+				}
+			}
+			\draw (1pt+0.3cm,1) -- (-1pt+0.3cm,1) node[anchor=east] {$t_{n+1}=t^{M}=t^4$};
+			\draw (1pt+0.3cm,5) -- (-1pt+0.3cm,5) node[anchor=east] {$t_n=t^{0}$};
+			\foreach\l[count=\y] in {3,2,1}
+			{
+				\draw (1pt+0.3cm,\y+1) -- (-1pt+0.3cm,\y+1) node[anchor=east] {$t^{\l}$};
+			}
+			}
+		
+			\only<2->{
+			\foreach\w/\z[count=\x] in {\xa/0,\xb/1}
+			{
+				\foreach\l/\r[count=\y] in {0/\ya,1/\ye}
+				{
+					\fill (\w,\r) circle (0.5mm) node[anchor=south west] {$\!\bu^{\l,(\z)}$};
+				}
+			}
+			
+			\foreach\w/\z[count=\x] in {\xc/2}
+			{
+				\foreach\l/\r[count=\y] in {0/\ya,1/\yc,2/\ye}
+				{
+					\fill (\w,\r) circle (0.5mm) node[anchor=south west] {$\!\bu^{\l,(\z)}$};
+				}
+			}
+		
+			\foreach\w/\z[count=\x] in {\xd/3}
+			{
+				\foreach\l/\r[count=\y] in {0/\ya,1/\yf,2/\yg,3/\ye}
+				{
+					\fill (\w,\r) circle (0.5mm) node[anchor=south west] {$\!\bu^{\l,(\z)}$};
+				}
+			}
+		
+			\foreach\w/\z[count=\x] in {\xe/4,\xf/5}
+			{
+				\foreach\l/\r[count=\y] in {0/\ya,1/\yb,2/\yc,3/\yd,4/\ye}
+				{
+					\fill (\w,\r) circle (0.5mm) node[anchor=south west] {$\!\bu^{\l,(\z)}$};
+				}
+			}
+			\draw (1pt+0.3cm,1) -- (-1pt+0.3cm,1) node[anchor=east] {$t_{n+1}=t^{M}=t^4$};
+			\draw (1pt+0.3cm,5) -- (-1pt+0.3cm,5) node[anchor=east] {$t_n=t^{0}$};
+			\foreach\l[count=\y] in {3,2,1}
+			{
+				\draw (1pt+0.3cm,\y+1) -- (-1pt+0.3cm,\y+1) node[anchor=east] {$t^{\l}$};
+			}
+			}
+		
+			\draw (0.3,1) -- (0.3,5);
+			\node[anchor=center] at (0,0.55) {Iteration};
+			\foreach\l/\w[count=\x] in {0/\xa,1/\xb,2/\xc,3/\xd,4/\xe,P=5/\xf}
+			{
+				\draw (\w,1) -- (\w,5);
+				%\draw[dashed] (\w,1) -- (\w,2);
+				\node at (\w,0.5){$\l$};
+			}
+		
+			\node[anchor=center] at (0,5.7) {Order};
+			\foreach\w/\l[count=\x] in {\xa/1,\xb/2,\xc/3,\xd/4,\xe/5, \xf/6} %,P+1}
+			{
+				\node[anchor=west] at (\w,5.7) {\small $\!\!O(\dt^{\l})$};
+			}
+					
+			\foreach\w/\l[count=\x] in {\xa/1,\xb/2,\xc/3,\xd/4, \xe/5} 
+			{
+				\draw[arrow] (\w+0.02,0.8) to  [out=330,in=210] (\w+\xb-\xa -0.02,0.8);
+			}
+			%\node[anchor=west] at (5,4.7) {\small $\!\!O(\dt^{min{(P+1,M+2)}})$};
+			\visible<3>{
+				\draw[draw=red] (\xb-0.2,\ye-1) rectangle ++ (3,6);
+			}
+		\end{tikzpicture}
+	\end{beamercolorbox}
+	
+	\end{frame}
+	% u vs du
+	\begin{frame}{How to communicate between iterations?}
+		\begin{minipage}{0.66\textwidth}
+		\begin{beamercolorbox}[sep=1em,wd=\textwidth]{blockcolor2}
+		\centering
+		\begin{tikzpicture}[scale=1]
+			\tikzset{dot/.style={fill=black,circle}}
+			\tikzset{straightness/.style={straightness, draw, 
+					minimum size=3pt, 
+					inner sep=0pt, outer sep=0pt}}
+			\tikzset{arrow/.style={
+					color=black,
+					draw=black,
+					-latex,
+					font=\fontsize{8}{8}\selectfont}}
+			\newcommand{\xa}{1}
+			\newcommand{\xb}{2.7}
+			\newcommand{\xc}{4.4}
+			\newcommand{\xd}{6.1}
+			\newcommand{\xe}{7.8}
+			\newcommand{\xf}{9.5}
+			
+			\newcommand{\ya}{5}
+			\newcommand{\yb}{4}
+			\newcommand{\yc}{3}
+			\newcommand{\yd}{2}
+			\newcommand{\ye}{1}
+			
+			\newcommand{\yf}{3.666666}
+			\newcommand{\yg}{2.333333}
+			
+			
+			\draw (1pt+0.3cm,1) -- (-1pt+0.3cm,1) node[anchor=east] {$t_{n+1}=t^{M}$};
+			\draw (1pt+0.3cm,5) -- (-1pt+0.3cm,5) node[anchor=east] {$t_n=t^{0}$};
+			
+			\only<1>{
+				\foreach\l[count=\y] in {4,3,2,1,0}
+				{
+					%\draw (1,\y) -- (8.5,\y);
+					\foreach\w/\z[count=\x] in {\xa/1,\xd/2}
+					{
+						\fill (\w,\y) circle (0.5mm) node[anchor=south west] {$\!\bu^{\l,(\z)}$};
+					}
+				}
+				\foreach\l[count=\y] in {3,2,1}
+				{
+					\draw (1pt+0.3cm,\y+1) -- (-1pt+0.3cm,\y+1) node[anchor=east] {$t^{\l}$};
+				}
+			}
+			
+			\only<2>{
+				
+				\draw (\xa,1) -- (\xa,5);
+				\draw (\xb,1) -- (\xb,5);
+				\draw (\xc,1) -- (\xc,5);
+				\draw (\xd,1) -- (\xd,5);
+				\foreach\w/\z[count=\x] in {\xa/1}
+				{
+					\foreach\l/\r[count=\y] in {0/\ya,1/\ye}
+					{
+						\fill (\w,\r) circle (0.5mm) node[anchor=south west] {$\!\bu^{\l,(\z)}$};
+					}
+				}
+			
+				\foreach\w/\z[count=\x] in {\xb/1}
+				{
+					\foreach\l/\r[count=\y] in {0/\ya,1/\yc,2/\ye}
+					{
+						\fill (\w,\r) rectangle +(1.5mm,1.5mm) node[anchor=south west] {$\!\bu^{*,\l,(\z)}$};
+					}
+				}
+			
+				\foreach\w/\z[count=\x] in {\xc/1}
+				{
+					\foreach\l/\r[count=\y] in {0/\ya,1/\yc,2/\ye}
+					{
+						\fill (\w,\r) rectangle +(1.5mm,1.5mm) node[anchor=south west] {$\!\bE^{*,\l,(\z)}$};
+					}
+				}
+				
+				\foreach\w/\z[count=\x] in {\xd/2}
+				{
+					\foreach\l/\r[count=\y] in {0/\ya,1/\yc,2/\ye}
+					{
+						\fill (\w,\r) circle (0.5mm) node[anchor=south west] {$\!\bu^{\l,(\z)}$};
+					}
+				}
+				
+	%			\foreach\w/\z[count=\x] in {\xd/3}
+	%			{
+	%				\foreach\l/\r[count=\y] in {0/\ya,1/\yf,2/\yg,3/\ye}
+	%				{
+	%					\fill (\w,\r) circle (0.5mm) node[anchor=south west] {$\!\bu^{\l,(\z)}$};
+	%				}
+	%			}
+	%			
+	%			\foreach\w/\z[count=\x] in {\xe/4,\xf/5}
+	%			{
+	%				\foreach\l/\r[count=\y] in {0/\ya,1/\yb,2/\yc,3/\yd,4/\ye}
+	%				{
+	%					\fill (\w,\r) circle (0.5mm) node[anchor=south west] {$\!\bu^{\l,(\z)}$};
+	%				}
+	%			}
+				\foreach\l[count=\y] in {3,2,1}
+				{
+					\draw (1pt+0.3cm,\y+1) -- (-1pt+0.3cm,\y+1) node[anchor=east] {$t^{\l}$};
+				}
+			}
+	
+			\only<3->{
+		
+			\draw (\xa,1) -- (\xa,5);
+			\draw (\xb,1) -- (\xb,5);
+			\draw (\xc,1) -- (\xc,5);
+			\draw (\xd,1) -- (\xd,5);
+			\foreach\w/\z[count=\x] in {\xa/1}
+			{
+				\foreach\l/\r[count=\y] in {0/\ya,1/\ye}
+				{
+					\fill (\w,\r) circle (0.5mm) node[anchor=south west] {$\!\bu^{\l,(\z)}$};
+				}
+			}
+			
+			\foreach\w/\z[count=\x] in {\xb/1}
+			{
+				\foreach\l/\r[count=\y] in {0/\ya,1/\ye}
+				{
+					\fill (\w,\r) circle (0.5mm) node[anchor=south west] {$\!\bE(\bu^{\l,(\z)})$};
+				}
+			}
+			
+			\foreach\w/\z[count=\x] in {\xc/1}
+			{
+				\foreach\l/\r[count=\y] in {0/\ya,1/\yc,2/\ye}
+				{
+					\fill (\w,\r) rectangle +(1.5mm,1.5mm) node[anchor=south west] {$\!\bE^{*,\l,(\z)}$};
+				}
+			}
+			
+			\foreach\w/\z[count=\x] in {\xd/2}
+			{
+				\foreach\l/\r[count=\y] in {0/\ya,1/\yc,2/\ye}
+				{
+					\fill (\w,\r) circle (0.5mm) node[anchor=south west] {$\!\bu^{\l,(\z)}$};
+				}
+			}
+	
+			\foreach\l[count=\y] in {3,2,1}
+			{
+				\draw (1pt+0.3cm,\y+1) -- (-1pt+0.3cm,\y+1) node[anchor=east] {$t^{\l}$};
+			}
+		}
+	
+			
+			\draw (0.3,1) -- (0.3,5);
+			\node[anchor=center] at (0,0.55) {Iteration};
+			\foreach\l/\w[count=\x] in {1/\xa,2/\xd}
+			{
+				\draw (\w,1) -- (\w,5);
+				%\draw[dashed] (\w,1) -- (\w,2);
+				\node at (\w,0.5){$\l$};
+			}
+			
+			\node[anchor=center] at (0,5.7) {Order};
+			\foreach\w/\l[count=\x] in {\xa/2,\xd/3} %,P+1}
+			{
+				\node[anchor=west] at (\w,5.7) {\small $\!\!O(\dt^{\l})$};
+			}
+		\only<3->{
+			\draw[arrow] (\xa+0.02,0.8) to  [out=330,in=210] (\xb-0.02,0.8) ;
+			\node[anchor=center] at (\xa/2+\xb/2, 0.4) {$\bE$};
+			\draw[arrow] (\xb+0.02,0.8) to  [out=330,in=210] (\xc-0.02,0.8);
+			\node[anchor=center] at (\xc/2+\xb/2, 0.4) {$H^{(p)}$};
+			\draw[arrow] (\xc+0.02,0.8) to  [out=330,in=210] (\xd-0.02,0.8);
+			\node[anchor=center] at (\xd/2+\xc/2, 0.4) {$\Theta^{(p)}$};
+		}
+		\only<2>{
+			\draw[arrow] (\xa+0.02,0.8) to  [out=330,in=210] (\xb-0.02,0.8) ;
+			\node[anchor=center] at (\xa/2+\xb/2, 0.4) {$H^{(p)}$};
+			\draw[arrow] (\xb+0.02,0.8) to  [out=330,in=210] (\xc-0.02,0.8);
+			\node[anchor=center] at (\xc/2+\xb/2, 0.4) {$\bE$};
+			\draw[arrow] (\xc+0.02,0.8) to  [out=330,in=210] (\xd-0.02,0.8);
+			\node[anchor=center] at (\xd/2+\xc/2, 0.4) {$\Theta^{(p)}$};
+		}
+		
+		\only<1>{
+			\draw[arrow] (\xa+0.02,0.8) to  [out=330,in=210] (\xd-0.02,0.8) ;
+			\node[anchor=center] at (\xa/2+\xd/2, 0.3) {$\Theta \bE$};
+		}
+		
+		
+		%\node[anchor=west] at (5,4.7) {\small $\!\!O(\dt^{min{(P+1,M+2)}})$};
+		\draw[draw=red] (\xa-0.2,\ye-1) rectangle ++ (6.6,6);
+	\end{tikzpicture}
+	\end{beamercolorbox}
+		\end{minipage}\hfill
+	\begin{minipage}{0.33\textwidth}
+		\begin{beamercolorbox}[sep=1em,wd=\textwidth]{blockcolor1}
+				\centering
+				 \highlightB{DeC}
+				\begin{equation*}
+						\bbc^{(p)}=\bbc^0+ \dt {\only<4>{\color{red}}\Theta} \bG(\bbc^{(p-1)})
+				\end{equation*}
+			\visible<2->{		
+			\highlightB{DeCu}
+			\begin{align*}
+				&\bbc^{(p)}=\bbc^0+ \dt \Theta^{(p)} \bG(H^{(p)}\bbc^{(p-1)})\\
+				\visible<4->{&\bbc^{*(p)}\!\!=\bbc^0\!+ \!\dt {\only<4>{\color{red}}H^{(p)} \Theta^{*(p-1)}} \bG(\bbc^{*(p-1)})}
+		\end{align*}}
+	
+	\visible<3->{		
+		\highlightB{DeCdu}
+		\begin{equation*}
+			\bbc^{(p)}=\bbc^0+ \dt{\only<4>{\color{red}} \Theta^{(p)} H^{(p)}}\bG(\bbc^{(p-1)})
+	\end{equation*}}
+
+	\visible<2->{
+		$$H^{(p)}_{ij} = \phi^{(p-1)}_j(t^{i,(p)})$$
+	}
+		\end{beamercolorbox}
+	\end{minipage}
+	\end{frame}
+	
+	% RK
+	\begin{frame}{Efficient DeC into RK framework}
+		\only<1>{
+		\begin{beamercolorbox}[sep=1em,wd=\textwidth]{blockcolor1}
+			\centering
+			\Large \highlightB{DeC} \qquad $S=M\cdot (P-1)+1$
+		\end{beamercolorbox}	
+	\centering
+			\resizebox{0.85\columnwidth}{!}{
+		\begin{tabular}{|c||ccccccc|l|r|}
+			\hline
+			$\uvec{c}$& $\bu^0$ & $\bbu^{(1)}$& $\bbu^{(2)}$&$\bbu^{(3)}$& $\cdots$& $\bbu^{(M-1)}$& $\bbu^{(M)}$&A&dim\\
+			\hline
+			$0$ & 0 & &&&&&&$\bu^0$&1\\
+			$\vecbeta_{1:}$& $\vecbeta_{1:}$ & $\matz$ &&&&&&$\bbu^{(1)}$ &M\\
+			$\vecbeta_{1:}$& $\Theta_{1:,0}$ & $\Theta_{1:,1:}$ & $\matz$&&&&&$\bbu^{(2)}$&M\\
+			$\vecbeta_{1:}$& $\Theta_{1:,0}$&  $\matz$& $\Theta_{1:,1:}$ & $\matz$&&&&$\bbu^{(3)}$&M\\
+			&$\vdots$   &$\vdots$ &&$\ddots$& $\ddots$&&& $\vdots$&M\\
+			&$\vdots$   &$\vdots$ &&&$\ddots$& $\ddots$&& $\vdots$&M\\
+			$\vecbeta_{1:}$ &$\Theta_{1:,0}$ &  $\matz$&$\cdots$&$\cdots$&$\matz$&$\Theta_{1:,1:}$&$\matz$&$\bbu^{(M)}$&M\\ \hline\hline
+			$\uvec{b}$&$\Theta_{M,0}$ &  $\vecz$&$\cdots$&$\cdots$&$\cdots$&$\vecz$&$\Theta_{M,1:}$&$\bbu^{M,(M+1)}$&\\ \hline
+	\end{tabular}}
+	}
+		
+		\only<2>{
+			\begin{beamercolorbox}[sep=1em,wd=\textwidth]{blockcolor1}
+				\centering
+				\Large \highlightB{DeCu} \qquad $S=M\cdot (P-1)+1\color{red}-\frac{(M-1)(M-2)}{2}$
+			\end{beamercolorbox}
+	\resizebox{\columnwidth}{!}{
+		\begin{tabular}{|c||cccccccc|l||r|}
+			\hline
+			$\uvec{c}$& $\bu^0$ & $\bbu^{*(1)}$& $\bbu^{*(2)}$&$\bbu^{*(3)}$& $\cdots$& $\bbu^{*(M-2)}$& $\bbu^{*(M-1)}$& $\bbu^{(M)}$&A&dim\\
+			\hline
+			$0$ & 0 & &&&&&&&$\bu^0$&1\\
+			$\vecbeta^{(2)}_{1:}$& $\vecbeta^{(2)}_{1:}$ & $\matz$ &&&&&&&$\bbu^{*(1)}$&2 \\
+			$\vecbeta^{(3)}_{1:}$& $W^{(2)}_{1:,0}$ & $W^{(2)}_{1:,1:}$ & $\matz$&&&&&&$\bbu^{*(2)}$&3\\
+			$\vecbeta^{(4)}_{1:}$& $W^{(3)}_{1:,0}$&  $\matz$& $W^{(3)}_{1:,1:}$ & $\matz$&&&&&$\bbu^{*(3)}$&4\\
+			&$\vdots$   &$\vdots$ &&$\ddots$& $\ddots$&&&& $\vdots$&$\vdots$\\
+			&$\vdots$   &$\vdots$ &&&$\ddots$& $\ddots$&&& $\vdots$&$\vdots$\\
+			$\vecbeta^{(M)}_{1:}$ &$W^{(M-1)}_{1:,0}$ &  $\matz$&$\cdots$&$\cdots$&$\matz$ &$W^{(M-1)}_{1:,1:}$&$\matz$&$\matz$&$\bbu^{*(M-1)}$&$M$\\
+			$\vecbeta^{(M)}_{1:}$&$W^{(M)}_{1:,0}$ &   $\matz$&$\cdots$&$\cdots$&$\cdots$&$\matz$&$W^{(M)}_{1:,1:}$&$\matz$&$\bbu^{(M)}$&$M$\\ \hline\hline
+			$\uvec{b}$&$W^{(M+1)}_{M,0}$ &  $\vecz$&$\cdots$&$\cdots$&$\cdots$&$\cdots$&$\vecz$&$W^{(M+1)}_{M,1:}$&$\bbu^{M,(M+1)}$&\\ \hline
+	\end{tabular} }	
+	\begin{align*}
+		W^{(p)} : = \begin{cases}
+			H^{(p)}\Theta^{(p)} \in \R^{(p+2)\times(p+1)}, &\text{if } p =2, \dots, M-1,\\
+			\Theta^{(M)} \in \R^{(M+1)\times (M+1)}, & \text{if } p \geq M.
+		\end{cases}
+	\end{align*}
+	}
+	\only<3>{
+		\begin{beamercolorbox}[sep=1em,wd=\textwidth]{blockcolor1}
+			\centering
+			\Large \highlightB{DeCdu} \qquad $S=M\cdot (P-1)+1\color{red}-\frac{M(M-1)}{2}$
+		\end{beamercolorbox}
+			\resizebox{\columnwidth}{!}{
+			\begin{tabular}{|c||cccccccc|l||r|}
+				\hline
+				$\uvec{c}$& $\bu^0$ & $\bbu^{(1)}$& $\bbu^{(2)}$&$\bbu^{(3)}$& $\cdots$& $\bbu^{(M-2)}$& $\bbu^{(M-1)}$& $\bbu^{(M)}$&A&dim\\
+				\hline
+				$0$ & 0 & &&&&&&&$\bu^0$&1\\
+				$\vecbeta^{(1)}_{1:}$& $\vecbeta^{(1)}_{1:}$ & $\matz$ &&&&&&&$\bbu^{(1)}$&1 \\
+				$\vecbeta^{(2)}_{1:}$& $Z^{(2)}_{1:,0}$ & $Z^{(2)}_{1:,1:}$ & $\matz$&&&&&&$\bbu^{(2)}$&2\\
+				$\vecbeta^{(3)}_{1:}$& $Z^{(3)}_{1:,0}$&  $\matz$& $Z^{(3)}_{1:,1:}$ & $\matz$&&&&&$\bbu^{(3)}$&3\\
+				&$\vdots$   &$\vdots$ &&$\ddots$& $\ddots$&&&& $\vdots$&$\vdots$\\
+				&$\vdots$   &$\vdots$ &&&$\ddots$& $\ddots$&&& $\vdots$&$\vdots$\\
+				$\vecbeta^{(M-1)}_{1:}$ &$Z^{(M-1)}_{1:,0}$ &  $\matz$&$\cdots$&$\cdots$&$\matz$ &$Z^{(M-1)}_{1:,1:}$&$\matz$&$\matz$&$\bbu^{(M-1)}$&$M-1$\\
+				$\vecbeta^{(M)}_{1:}$&$Z^{(M)}_{1:,0}$ &   $\matz$&$\cdots$&$\cdots$&$\cdots$&$\matz$&$Z^{(M)}_{1:,1:}$&$\matz$&$\bbu^{(M)}$&$M$\\ \hline\hline
+				$\uvec{b}$&$Z^{(M+1)}_{M,0}$ &  $\vecz$&$\cdots$&$\cdots$&$\cdots$&$\cdots$&$\vecz$&$Z^{(M+1)}_{M,1:}$&$\bbu^{M,(M+1)}$&\\ \hline
+		\end{tabular} } 
+	\begin{align*}
+		Z^{(p)} : = \begin{cases}
+			\Theta^{(p)}H^{(p-1)} \in \R^{(p+1)\times p}, &\text{if } p =1, \dots, M,\\
+			\Theta^{(M)} \in \R^{(M+1)\times (M+1)}, & \text{if } p >M.
+		\end{cases}
+	\end{align*}
+	}
+	\end{frame}
+	
+	% cost
+	\begin{frame}{Computational costs reduction: RK stages}
+	%	\begin{minipage}{0.33\textwidth}
+	%		\begin{block}{Equispaced}
+	%			\centering
+	%				\highlightB{DeC }\\
+	%				$S=(P-1)^2+1$\\
+	%				\highlightB{DeCu }\\
+	%				$S=(P-1)^2+1-\frac{(P-2)(P-3)}{2}$\\
+	%				\highlightB{DeCdu}\\
+	%				 $S=(P-1)^2+1-\frac{(P-1)(P-2)}{2}$
+	%		\end{block}
+	%	
+	%		\begin{block}{Gauss-Lobatto}
+	%			\centering
+	%			\highlightB{bDeC }\\
+	%			$S=\left\lceil\frac{P}{2} \right\rceil (P-1)+1$\\
+	%			\highlightB{DeCu }\\
+	%			$S=\left\lceil\frac{P}{2} \right\rceil (P-1)+1-\frac{(\left\lceil\frac{P}{2} \right\rceil-1)(\left\lceil\frac{P}{2} \right\rceil-2)}{2}$\\
+	%			\highlightB{DeCdu}\\
+	%			$S=(P-1)^2+1-\frac{\left\lceil\frac{P}{2} \right\rceil(\left\lceil\frac{P}{2} \right\rceil-1)}{2}$
+	%		\end{block}
+	%	\end{minipage}
+		\begin{minipage}{0.49\textwidth}
+			\centering
+			\begin{beamercolorbox}[sep=1em,wd=\textwidth]{blockcolor1}
+				\begin{center}
+					\LARGE 
+					\highlight{Equispaced}
+				\end{center}
+			\end{beamercolorbox}
+			\resizebox{0.9\columnwidth}{!}{%
+			\begin{tabular}{|c|c||c|c|c|}\hline
+				P &	M & DeC & DeCu  & DeCdu\\\hline
+				2  &     1  &     2 &  2 &   2 \\ 
+				3  &     2  &    5 &   5  &    4 \\ 
+				4  &     3  &   10 &   9  &    7 \\ 
+				{\color{red}5}  &     4  &  {\color{red} 17} &  {\color{red}14}  &   {\color{red}11} \\ 
+				6  &     5  &   26 &  20  &   16 \\ 
+				7  &     6  &   37 &  27  &   22 \\ 
+				8  &     7  &   50 &  35  &   29 \\ 
+				9  &     8  &   65 &  44  &   37 \\ 
+				10  &     9  &  82 &  54  &   46 \\ 
+				11  &    10  &  101 &  65  &  56 \\ 
+				12  &    11  &  122 &  77  &  67 \\ 
+				13  &    12  &  145 &  90  &  79 \\\hline		
+			\end{tabular}
+		}
+	%		\caption{Number of stages for the original ($\alpha$DeC, DeC) and novel (DeCu, $\alpha$DeCdu, DeCdu) methods with equispaced subtimenodes: for $\alpha$DeC and DeC we have respectively $S=M\cdot P$ and $S=M\cdot (P-1) +1$; for DeCu we have $S=M\cdot (P-1) +1 -\frac{(M-1)(M-2)}{2} $; for $\alpha$DeCdu and DeCdu we have respectively $S=M\cdot P -\frac{M(M-1)}{2} $ and $S=M\cdot (P-1) +1 -\frac{M(M-1)}{2}$. \label{tab:stagesNumbersEquispaced}}
+		\end{minipage}	
+		\hfill
+		\begin{minipage}{0.49\textwidth}
+		\centering
+	\begin{beamercolorbox}[sep=1em,wd=\textwidth]{blockcolor1}
+		\begin{center}
+			\LARGE 
+			\highlight{Gauss-Lobatto}
+		\end{center}
+	\end{beamercolorbox}
+		\resizebox{0.9\columnwidth}{!}{%
+			\begin{tabular}{|c|c||c|c|c|}\hline
+				P &	M &  DeC & DeCu &  DeCdu\\\hline
+				2  &     1  &    2 &   2  &    2 \\ 
+				3  &     2  &    5 &   5  &    4 \\ 
+				4  &     2  &    7 &   7  &    6 \\ 
+				{\color{red}5}  &     3  &   {\color{red}13} &  {\color{red}12}  &   {\color{red}10 }\\ 
+				6  &     3  &   16 &  15  &   13 \\ 
+				7  &     4  &   25 &  22  &   19 \\ 
+				8  &     4  &   29 &  26  &   23 \\ 
+				9  &     5  &   41 &  35  &   31 \\ 
+				10  &     5  &   46 &  40  &   36 \\ 
+				11  &     6  &   61 &  51  &   46 \\ 
+				12  &     6  &   67 &  57  &   52 \\
+				13  &     7  &   85 &  70  &   64 \\  \hline		
+			\end{tabular}
+		}
+	\end{minipage}
+	%		\caption{Number of stages for the original ($\alpha$DeC, DeC) and novel (DeCu, $\alpha$DeCdu, DeCdu) methods with Gauss-Lobatto subtimenodes: for $\alpha$DeC and DeC we have respectively $S=M\cdot P$ and $S=M\cdot (P-1) +1$; for DeCu we have $S=M\cdot (P-1) +1 -\frac{(M-1)(M-2)}{2} $; for $\alpha$DeCdu and DeCdu we have respectively $S=M\cdot P -\frac{M(M-1)}{2} $ and $S=M\cdot (P-1) +1 -\frac{M(M-1)}{2}$. \label{tab:stagesNumbersGL}}
+	%	\end{table}
+	\end{frame}
+	
+	% stability
+	\begin{frame}{Stability Properties}
+		\begin{minipage}{0.49\textwidth}
+		\begin{block}{DeC-DeCu-DeCdu}
+			\begin{center}
+				The \highlightB{stability function} of DeC, DeCu, DeCdu of order $P$ for any nodes distribution is
+				\begin{equation*}
+					R(z) = 1 + z + \frac{z^2}{2!} +\dots +\frac{z^P}{P!}.
+				\end{equation*}
+			\end{center}
+		\end{block}
+	%\visible<2->{
+	%	\begin{block}{DeCu and DeCdu}
+	%	\begin{center}
+	%		Given a DeC with a certain node distribution, the \highlightB{DeCu and DeCdu} version are \highlightB{equivalent} on \highlightB{linear} problems and have the same stability function and region.
+	%	\end{center}
+	%\end{block}
+	%}
+		\end{minipage}\hfill
+	\begin{minipage}{0.49\textwidth}
+		\centering 
+		\only<1>{
+		\begin{beamercolorbox}[sep=1mm,wd=\textwidth]{blockcolor1}
+			\begin{center}
+					\Large \highlight{ DeC, DeCu, DeCdu}
+			\end{center}
+		\end{beamercolorbox}
+		\includegraphics[width=0.75\textwidth]{figures/stability/stability_region_DeC_equispaced.pdf}}
+	%\only<2>{	\begin{beamercolorbox}[sep=1mm,wd=\textwidth]{blockcolor1}
+	%		\begin{center}
+	%			\Large \highlight{ sDeC equispaced}
+	%		\end{center}
+	%	\end{beamercolorbox}
+	%\includegraphics[width=0.75\textwidth]{figures/stability/stability_region_DeC_small_equispaced.pdf}}
+	%\only<3>{	\begin{beamercolorbox}[sep=1mm,wd=\textwidth]{blockcolor1}
+	%		\begin{center}
+	%			\Large \highlight{ sDeCu, sDeCdu equispaced}
+	%		\end{center}
+	%	\end{beamercolorbox}
+	%	\includegraphics[width=0.75\textwidth]{figures/stability/stability_region_DeC_small_stag_equispaced.pdf}}
+	%\only<4>{	\begin{beamercolorbox}[sep=1mm,wd=\textwidth]{blockcolor1}
+	%	\begin{center}
+	%		\Large \highlight{ sDeC Gauss-Lobatto}
+	%	\end{center}
+	%\end{beamercolorbox}
+	%\includegraphics[width=0.75\textwidth]{figures/stability/stability_region_DeC_small_gaussLobatto.pdf}}
+	%\only<5>{\begin{beamercolorbox}[sep=1mm,wd=\textwidth]{blockcolor1}
+	%	\begin{center}
+	%		\Large \highlight{ sDeCu, sDeCdu Gauss-Lobatto}
+	%	\end{center}
+	%\end{beamercolorbox}
+	%\includegraphics[width=0.75\textwidth]{figures/stability/stability_region_DeC_small_stag_gaussLobatto.pdf}}
+	\end{minipage}
+	\end{frame}
+
+\begin{frame}{Exercise}
+	\begin{block}{Efficient DeC}
+		\begin{itemize}
+			\item Code DeCu or DeCdu
+			\item Check order of accuracy
+			\item Write a code to obtain its RK matrix
+			\item Check the stability function with nodepy
+			\item Compare computational costs with original DeC
+		\end{itemize}		
+	\end{block}
+	
+\end{frame}
 
 \end{document}
 
