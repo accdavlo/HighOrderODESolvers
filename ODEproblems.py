@@ -1,4 +1,6 @@
 import numpy as np
+from nodepy import ivp
+C5ivp = ivp.detest('C5')
 
 ## Linear scalar Dahlquist's equation
 def linear_scalar_flux(u,t=0,k_coef=10):
@@ -212,6 +214,7 @@ def pendulum_entropy_variables(u,t=0):
     v[1]=u[1]
     return v
 
+
 # Robertson
 def Robertson_flux(u,t=0,alpha=10**4,beta=0.04, gamma=3*10**7):
     ff=np.zeros(np.shape(u))
@@ -287,9 +290,9 @@ def threeBodies_flux(u,t=0):
     w=u[6:8]
     z=u[8:10]
     s=u[10:12]
-    dxy3=np.linalg.norm(x-y)**3
-    dxz3=np.linalg.norm(x-z)**3
-    dyz3=np.linalg.norm(y-z)**3
+    dxy3=sum(abs(x-y)**2)**(3./2.)#np.linalg.norm(x-y)**3
+    dxz3=sum(abs(x-z)**2)**(3./2.)#np.linalg.norm(x-z)**3
+    dyz3=sum(abs(z-y)**2)**(3./2.)#np.linalg.norm(y-z)**3
     f[0:2]=v
     f[2:4]=-m2*G/dxy3*(x-y)-m3*G/dxz3*(x-z)
     f[4:6]=w
@@ -304,6 +307,42 @@ def square_entropy(u):
 
 def square_entropy_variable(u):
     return u
+
+
+
+def vibratingDamped_flux(u,t, m_coef,r_coef, k_coef, f_coef, omega_coef, phi_coef):
+    f=np.zeros(np.shape(u))
+    f[0] = u[1]
+    f[1] = -r_coef/m_coef*u[1] - k_coef/m_coef*u[0] + f_coef/m_coef*np.cos(omega_coef*t+phi_coef)
+    return f
+
+def vibratingDamped_exact_solution(u0,t, m_coef,r_coef, k_coef, f_coef, omega_coef, phi_coef):
+    Y_p = f_coef/np.sqrt((-m_coef*omega_coef**2+k_coef)**2+omega_coef**2*r_coef**2)
+    psi = phi_coef - np.arctan2(omega_coef*r_coef,-m_coef*omega_coef**2+k_coef)
+    y_p = Y_p*np.cos(omega_coef*t+psi)
+    alpha = r_coef/m_coef
+    beta = k_coef/m_coef
+    delta = alpha**2 -4*beta
+    if delta > 0:
+        l1 = 0.5*(-alpha - np.sqrt(delta))
+        l2 = 0.5*(-alpha + np.sqrt(delta)) 
+        bb = np.array([u0[0]-Y_p*np.cos(psi),\
+                       u0[1]+Y_p*omega_coef*np.sin(psi)])
+        AA = np.array([[1. , 1.],[ l1, l2 ]])
+        cc = np.linalg.solve(AA,bb)
+        y = cc[0]*np.exp(l1*t) + cc[1]*np.exp(l2*t)
+    elif delta ==0:
+        l = 0.5*(-alpha)
+        c1 = u0[0] - Y_p*np.cos(psi)
+        c2 = u0[1] +Y_p * omega_coef*np.sin(psi) -c1*l
+        y = c1*np.exp(l*t) + c2*t*np.exp(l*t)
+    elif delta <0:
+        theta = np.sqrt(-delta)/2
+        c1 = u0[0] - Y_p *np.cos(psi) 
+        c2 = (u0[1] +Y_p*omega_coef * np.sin(psi)+ alpha/2*c1 )/theta 
+        y = np.exp(-alpha/2*t)*(c1*np.cos(theta*t)+c2*np.sin(theta*t))
+    u_e = y+y_p
+    return u_e
 
 class ODEproblem:
     def __init__(self,name):
@@ -354,6 +393,19 @@ class ODEproblem:
         elif self.name=="threeBodies":
             self.u0 = np.array([0,0,0,0,149*10**9,0,0,30*10**3,-226*10**9,0,0,-24.0*10**3])
             self.T_fin= 10.**8.
+        elif self.name == "vibratingDamped":
+            self.u0 = np.array([0.5, 0.25])
+            self.T_fin = 4.
+            self.m_coef = 5.
+            self.r_coef = 2
+            self.k_coef = 5.
+            self.f_coef = 1.
+            self.omega_coef = 2.
+            self.phi_coef = 0.1
+        elif self.name == "C5":
+            self.u0 = C5ivp.u0
+            self.u0 = C5ivp.u0
+            self.T_fin = C5ivp.T
         else:
             raise ValueError("Problem not defined")
 
@@ -384,6 +436,10 @@ class ODEproblem:
             return lotka_flux(u,t)
         elif self.name=="threeBodies":
             return threeBodies_flux(u,t)
+        elif self.name=="vibratingDamped":
+            return vibratingDamped_flux(u,t,self.m_coef,self.r_coef, self.k_coef, self.f_coef, self.omega_coef, self.phi_coef)
+        elif self.name == "C5":
+            return C5ivp.rhs(t,u)
         else:
             raise ValueError("Flux not defined for this problem")
         
@@ -426,6 +482,8 @@ class ODEproblem:
             return nonLinearOscillator_exact_solution(u,t,self.alpha)
         elif self.name=="nonLinearOscillatorDamped":
             return nonLinearOscillator_exact_solution(u,t,self.alpha)
+        elif self.name=="vibratingDamped":
+            return vibratingDamped_exact_solution(u,t,self.m_coef,self.r_coef, self.k_coef, self.f_coef, self.omega_coef, self.phi_coef)
         else:
             raise ValueError("Exact solution not defined for this problem")
             
