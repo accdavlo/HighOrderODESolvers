@@ -1,66 +1,82 @@
-\documentclass[aspectratio=169]{beamer}
+\PassOptionsToPackage{subsection=false}{beamerouterthememiniframes}
+\documentclass[9pt,compress,t,aspectratio=169]{beamer}
+\usetheme[
+	bullet=circle,
+	alternativetitlepage=true,
+	titleline=true,
+	titlepagelogo=img/sissa_and_mathlab,
+]{mathlab}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{verbatim} % per comment
+\usepackage{lmodern} % font più chiaro
+\usepackage{ragged2e}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage[thicklines]{cancel}
+\usepackage{xcolor}
+\usepackage{wasysym}
+\usepackage{units}
+\usepackage{tikzsymbols}
+\usepackage{bbm}
 
-\mode<presentation>
-{
-  \usetheme{Madrid}%\usetheme{uzhneu-en}
-  \setbeamercovered{transparent}
-%  \usecolortheme{albatross}
-\usefonttheme{professionalfonts}
 
-%\setbeamercolor{normal text}{fg=white,bg=black!90}
-%\setbeamercolor{structure}{fg=white}
-%
-%\setbeamercolor{alerted text}{fg=red!85!black}
-%
-%\setbeamercolor{item projected}{use=item,fg=black,bg=item.fg!35}
-%
-%\setbeamercolor*{palette primary}{use=structure,fg=structure.fg}
-%\setbeamercolor*{palette secondary}{use=structure,fg=structure.fg!95!black}
-%\setbeamercolor*{palette tertiary}{use=structure,fg=structure.fg!90!black}
-%\setbeamercolor*{palette quaternary}{use=structure,fg=structure.fg!95!black,bg=black!80}
-%
-%\setbeamercolor*{framesubtitle}{fg=white}
-%\setbeamercolor{frametitle}{bg=black!80}
-%
-%\setbeamercolor*{block title}{parent=structure,bg=black!60}
-%\setbeamercolor*{block body}{fg=black,bg=black!10}
-%\setbeamercolor*{block title alerted}{parent=alerted text,bg=black!15}
-%\setbeamercolor*{block title example}{parent=example text,bg=black!15}
+\usepackage{multimedia}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
 
+\usetikzlibrary{shadows}
+
+\usetikzlibrary{decorations.pathreplacing,calligraphy}
+
+%\usepackage{media9}%
+\newcommand\Ccancel[2][black]{\renewcommand\CancelColor{\color{#1}}\cancel{#2}}
+\newcommand{\cfbox}[2]{%
+    \colorlet{currentcolor}{.}%
+    {\color{#1}%
+    \fbox{\color{currentcolor}#2}}%
 }
 
-%\usepackage[numbers]{natbib}
-\usepackage{graphicx} %include i grafici
-\usepackage[english]{babel}
-\usepackage[normal]{subfigure}
-\usepackage{amsthm}
+
+
+\newcommand{\bad}{\Sadey[2][red]}
+\newcommand{\good}{\Smiley[2][green]}
+
+\newcommand{\one}{$[1]$}
+\newcommand{\two}{$[2]$}
+\newcommand{\three}{$[3]$}
+
+
+\setbeamertemplate{navigation symbols}{}
+
+
+\graphicspath{%
+	{images/}%
+}
+
+
+% \usepackage[normal]{subfigure}
 \usepackage{amssymb}
-\usepackage{amsmath}
 \usepackage{color,xcolor,soul}
 %\DeclareMathOperator{\supp}{supp}
 \usepackage{mathrsfs}
-\usepackage{latexsym}
-\usepackage{graphicx}
-\DeclareGraphicsExtensions{.pdf,.jpg}
-\usepackage{subfigure}
+\DeclareGraphicsExtensions{.pdf,.jpg,.png}
 \usepackage{hyperref}
-%\hypersetup{colorlinks=true,linkcolor=blue}
-\usepackage{amsfonts}
-\usepackage{bm}
 %\usepackage{algorithm2e}
 \usepackage{comment}
 \usepackage{algorithm,algorithmic}
-\usepackage{tikz}
+
 \usetikzlibrary{arrows,chains,matrix,positioning,scopes}
 
-\usepackage[style=authortitle,backend=bibtex]{biblatex}
-\bibliography{biblio}
 
-\usepackage[utf8]{inputenc}
-
-
-\usepackage{times}
-\usepackage[T1]{fontenc}
 
 \definecolor{green}{rgb}{0.0, 0.42, 0.14}
 \definecolor{lightgreen}{rgb}{0,0.5,0}
@@ -249,18 +265,22 @@
 %\newcommand{\revDD}[1]{\textcolor{brown}{#1}}
 %\newcommand{\revDP}[1]{\textcolor{darkspringgreen}{#1}}
 
-\title[mPDeC modified Patankar Deferred Correction]{Arbitrary high-order, conservative and positive preserving Patankar-type deferred correction schemes} 
+\title[mPDeC modified Patankar Deferred Correction]{Arbitrary high-order,
+ conservative and positive preserving\\
+ Patankar-type deferred correction schemes} 
 
-\author[P. \"Offner \& D. Torlo]{Philipp \"Offner \& \underline{Davide Torlo}}
+\author[D. Torlo]{\bf \Large Davide Torlo}
 
-\institute[Inria]
-{Inria Bordeaux}
-
+\institute[SISSA mathLab]{%
+\vspace{-4mm}\\%
+\small MathLab, Mathematics Area, SISSA International School for Advanced Studies, Trieste, Italy\\
+\href{https://www.davidetorlo.it}{\underline{davidetorlo.it}}\vspace{-3mm}
+}
 
 \date[]
-{15th April 2021\\ \vspace{5mm}
-High order ODE solvers\\ \vspace{8mm}
-%\small{Acknowledgments: This research is funded by the ITN ModShockComp.}
+{ \small Based on: Öffner, P. \& Torlo, D. 
+\textit{Arbitrary high-order, conservative and positivity preserving Patankar-type deferred correction schemes.} 
+APNUM 153, 15--34 (2020). \url{https://doi.org/10.1016/j.apnum.2020.01.025}
 }
 
 \AtBeginSection[]
@@ -855,30 +875,58 @@ We use exponential timesteps to better catch the behaviour of the solution $\Del
 
 \end{frame}
 
-\section{Outlook}
-\begin{frame}{Outlook }
-Extensions:
-\begin{itemize}
-  \item Shu-Osher formulation of RK 
-  \item Stiff source terms 
-  \item Stability analysis
-  \item Shallow water equation
-  \item Euler equations 
-\end{itemize}
+\begin{frame}{Application to Shallow Water equations}
+	\begin{minipage}{0.48\textwidth}
+		$$
+		\begin{cases}
+			\partial_t h  + \nabla \cdot (h \bu) = 0\\
+			\partial_t \bu + \nabla \cdot ( h \bu \otimes \bu + g \frac{h^2}{2} \mathrm{I})= - g h \nabla b(\mathbf{x})
+		\end{cases}
+		$$
+		\begin{itemize}
+			\item	\href{https://davidetorlo.it/files/talks/mpdecsw_honom22.pdf}{Slides}\\
+			\item	\href{https://davidetorlo.it/publication/2021-10-27-sw-mpdec}{Article post}				
+		\end{itemize}
+	\end{minipage}\hfill
+	\begin{minipage}{0.48\textwidth}
+		\begin{figure}
+			\centering
+			\begin{tikzpicture}
+				
+				\draw [-stealth] (-0.2,-0.3) -- (4.2,-0.3);
+				\node [black,scale=1] at (4.2,-0.5) {$x$};
+				
+				\draw [stealth-stealth] (1,-0.3) -- (1,0.45);
+				\node [black,scale=0.9] at (1.5,0) {$b(x,y)$};
+				\draw [stealth-stealth] (3,0.1) -- (3,2.1);
+				\node [black,scale=0.9] at (3.2,1.2) {$h$};
+				\draw [stealth-stealth] (3.9,-0.3) -- (3.9,2.15);
+				\node [black,scale=0.9] at (4.1,1.0) {$\eta$};
+				
+				\draw [-latex] (1,1) -- (2,1);
+				\node [black,scale=0.9] at (1.5,1.2) {$\vec{u}$};
+				
+				\draw [black,ultra thick] plot [smooth] coordinates {(0,0) (0.5,0.2) (1,0.5) (1.5,0.3) (2,0.4) (2.5,0.1) (3,0.05) (3.5,0.2) (4,0.15)};
+				\draw [blue, ultra thick]  plot [smooth] coordinates {(0,2) (0.5,2.2) (1,2.7) (1.5,2.1) (2,1.7) (2.5,2.1) (3,2.15) (3.5,2.4) (4,2.15)};
+				
+			\end{tikzpicture}
+			\caption{Shallow Water Equations: definition of the variables.}\label{fig:SWE}
+		\end{figure}
+			
+	\end{minipage}
 
 
+	\begin{itemize}
+		\item MPDeC Code: If you want to check out the code, it's really easy ($\sim 150$ lines), in Julia, on git.
+
+		\url{https://git.math.uzh.ch/abgrall_group/deferred-correction-patankar-scheme}
+		
+		\item MPDeC Shallow Water code (Fortran)
+		\url{https://github.com/accdavlo/sw-mpdec}
+	\end{itemize}
 
 \end{frame}
 
-\begin{frame}{Code on git}
-
-If you want to check out the code, it's really easy ($\sim 150$ lines), in Julia, on git.
-
-\url{https://git.math.uzh.ch/abgrall_group/deferred-correction-patankar-scheme}
-
-\vspace{1.5cm}
-\centering \Huge Thank you!
-\end{frame}
 \end{document}
 
 
