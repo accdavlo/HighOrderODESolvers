@@ -1,7 +1,7 @@
 # HighOrderODESolvers
 [![License: MIT](https://img.shields.io/badge/License-MIT-success.svg)](https://opensource.org/licenses/MIT)
 
-This is a repository for the course on "High order accurate time integration methods" held in the Doctoral School at University of Bordeaux ([Course Page](https://www.adum.fr/script/formations.pl?mod=292601&site=edmi)). 
+This is a repository for the course on "Topics in high order accurate time integration methods" held in the Doctoral School at SISSA Trieste ([Course Page](https://www.math.sissa.it/course/phd-course/topics-high-order-accurate-time-integration-methods)). 
 
 
 The code developed in the course is available in this repository under the MIT License, without any warranty.
@@ -28,10 +28,17 @@ Prerequisites
 
 Schedule
 ========
- * Session 1: 14/04/2021 9:00-12:00
- * Session 2: 14/04/2021 13:30-16:30
- * Session 3: 15/04/2021 9:00-12:00
- * Session 4: 15/04/2021 13:30-16:30
+ * Tuesday,   March 7, 2023  - 11:00 to 13:00 - Room A-132
+ * Wednesday, March 8, 2023  - 11:00 to 13:00 - Room A-133
+ * Thursday,  March 9, 2023  - 11:00 to 13:00 - Room A-133
+ * Tuesday,   March 14, 2023 - 11:00 to 13:00 - Room A-132
+ * Wednesday, March 15, 2023 - 11:00 to 13:00 - Room A-133
+ * Thursday,  March 16, 2023 - 11:00 to 13:00 - Room A-133
+ * Wednesday, March 22, 2023 - 11:00 to 13:00 - Room A-133
+ * Thursday,  March 23, 2023 - 11:00 to 13:00 - Room A-133
+ * Tuesday,   March 28, 2023 - 11:00 to 13:00 - Room A-132
+ * Wednesday, March 29, 2023 - 11:00 to 13:00 - Room A-133
+
 
 Program
 ======
