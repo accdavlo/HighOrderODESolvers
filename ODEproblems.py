@@ -110,6 +110,48 @@ def linear_system3_jacobian(u,t=0):
     return Jf
 
 
+#lin system 3 x3
+
+def linear_system3_speeds_flux(u,t=0):
+    A =  np.array([[0, -1,1],[1,1,3],[-1,1,0]])
+    A1 = 1./15.*np.array([[-9, 3 ,-12],[-9,3,3],[6,3,3]])
+
+    Ma= np.array([[0, 0,1],[0,0,0],[-1,0,0]])
+    Mb= np.array([[0, 0,0],[0,-100,0],[0,0,0]])
+    Na = A@Ma@A1
+    Nb = A@Mb@A1
+
+    return (Na+Nb)@u
+
+
+def linear_system3_speeds_exact_solution(u0,t=0):
+    A =  np.array([[0, -1,1],[1,1,3],[-1,1,0]])
+    A1 = 1./15.*np.array([[-9, 3 ,-12],[-9,3,3],[6,3,3]])
+
+    Ma= np.array([[0, 0,1],[0,0,0],[-1,0,0]])
+    Mb= np.array([[0, 0,0],[0,-100,0],[0,0,0]])
+    Na = A@Ma@A1
+    Nb = A@Mb@A1
+
+    x0 = A1@u0
+    x = np.zeros(3)
+    x[1] = np.exp(-100*t)*x0[1]
+    x[0] = np.sin(t)*x0[2] + np.cos(t)*x0[0]
+    x[2] = np.cos(t)*x0[2] - np.sin(t)*x0[0]
+    return A@x
+
+def linear_system3_speeds_jacobian(u,t=0):
+    A =  np.array([[0, -1,1],[1,1,3],[-1,1,0]])
+    A1 = 1./15.*np.array([[-9, 3 ,-12],[-9,3,3],[6,3,3]])
+
+    Ma= np.array([[0, 0,1],[0,0,0],[-1,0,0]])
+    Mb= np.array([[0, 0,0],[0,-100,0],[0,0,0]])
+    Na = A@Ma@A1
+    Nb = A@Mb@A1
+    return Na+Nb
+
+
+
 ## Nonlinear 3x3 system production destruction
 def nonlinear_system3_flux(u,t=0):
     ff=np.zeros(len(u))
@@ -367,6 +409,9 @@ class ODEproblem:
         elif self.name=="linear_system3":
             self.u0 = np.array([0,0.,10.])
             self.T_fin= 10.
+        elif self.name=="linear_system3_speeds":
+            self.u0 = np.array([-1.,2.,0.])
+            self.T_fin= 10.
         elif self.name=="nonlinear_system3":
             self.u0 = np.array([9.98,0.01,0.01])
             self.T_fin= 30.
@@ -420,6 +465,8 @@ class ODEproblem:
             return linear_system2_flux(u,t)
         elif self.name=="linear_system3":
             return linear_system3_flux(u,t)
+        elif self.name=="linear_system3_speeds":
+            return linear_system3_speeds_flux(u,t)
         elif self.name=="nonlinear_system3":
             return nonlinear_system3_flux(u,t)
         elif self.name=="SIR":
@@ -454,6 +501,8 @@ class ODEproblem:
             return linear_system2_jacobian(u,t)
         elif self.name=="linear_system3":
             return linear_system3_jacobian(u,t)
+        elif self.name=="linear_system3_speeds":
+            return linear_system3_speeds_jacobian(u,t)
         elif self.name=="pendulum":
             return pendulum_jacobian(u,t)
         elif self.name=="SIR":
@@ -478,6 +527,8 @@ class ODEproblem:
             return linear_system2_exact_solution(u,t)
         elif self.name=="linear_system3":
             return linear_system3_exact_solution(u,t)
+        elif self.name=="linear_system3_speeds":
+            return linear_system3_speeds_exact_solution(u,t)
         elif self.name=="nonLinearOscillator":
             return nonLinearOscillator_exact_solution(u,t,self.alpha)
         elif self.name=="nonLinearOscillatorDamped":
