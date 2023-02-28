@@ -31,9 +31,9 @@ Schedule
  * Tuesday,   March 7, 2023  - 11:00 to 13:00 - Room A-132
  * Wednesday, March 8, 2023  - 11:00 to 13:00 - Room A-133
  * Thursday,  March 9, 2023  - 11:00 to 13:00 - Room A-133
- * Tuesday,   March 14, 2023 - 11:00 to 13:00 - Room A-132
+ * Tuesday,   March 14, 2023 - 10:00 to 12:00 - Room A-132 !!
  * Wednesday, March 15, 2023 - 11:00 to 13:00 - Room A-133
- * Thursday,  March 16, 2023 - 11:00 to 13:00 - Room A-133
+ * Thursday,  March 16, 2023 - 10:00 to 12:00 - Room A-133 !!
  * Wednesday, March 22, 2023 - 11:00 to 13:00 - Room A-133
  * Thursday,  March 23, 2023 - 11:00 to 13:00 - Room A-133
  * Tuesday,   March 28, 2023 - 11:00 to 13:00 - Room A-132
