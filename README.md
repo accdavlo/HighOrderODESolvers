@@ -39,6 +39,10 @@ Schedule
  * Wednesday, March 29, 2023 - 11:00 to 13:00 - Room A-133
  * Thursday,  March 30, 2023 - 11:00 to 13:00 - Room A-136
 
+Microsoft Teams link
+===========
+The couse can be attended online at this [link on Microsoft Teams](https://teams.microsoft.com/l/meetup-join/19%3ameeting_YTUzYzZhYjAtYjBlNC00MWY4LTk5OGMtNzMwYjM0MzMyMmMx%40thread.v2/0?context=%7b%22Tid%22%3a%22e4dd3336-ea1f-432c-b1e1-6966e8584f1b%22%2c%22Oid%22%3a%22cff80bd0-453f-4c4f-a6fd-61e7af40553d%22%7d) 
+
 
 Program
 ======
