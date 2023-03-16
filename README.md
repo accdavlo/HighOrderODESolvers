@@ -31,8 +31,8 @@ Schedule
  * Tuesday,   March 7, 2023  - 11:00 to 13:00 - Room A-132
  * Wednesday, March 8, 2023  - 11:00 to 13:00 - Room A-133
  * Thursday,  March 9, 2023  - 11:00 to 13:00 - Room A-133
- * Wednesday, March 15, 2023 - 11:00 to 13:00 - Room A-133
- * Tuesday,   March 21, 2023 - 10:00 to 12:00 - Room A-132 !!
+ * Wednesday, March 15, 2023 - 11:00 to 13:00 - Room A-133 [Recording](https://sissa-my.sharepoint.com/:v:/g/personal/dtorlo_sissa_it/EaqfvBdLfCZGmMLBsCW3UwoB0y3g-xILtJgiAlPdvWBfcA?e=qVXwZl)
+ * Tuesday,   March 21, 2023 - 10:30 to 12:00 - Room A-132 !!
  * Wednesday, March 22, 2023 - 11:00 to 13:00 - Room A-133
  * Thursday,  March 23, 2023 - 11:00 to 13:00 - Room A-133
  * Tuesday,   March 28, 2023 - 11:00 to 13:00 - Room A-132
