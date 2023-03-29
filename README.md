@@ -37,7 +37,7 @@ Schedule
  * Thursday,  March 23, 2023 - 11:00 to 13:00 - Room A-133 [Recording](https://sissa-my.sharepoint.com/:v:/r/personal/dtorlo_sissa_it/Documents/Registrazioni/High%20order%20accurate%20time%20integration%20methods-20230323_110107-Registrazione%20della%20riunione.mp4?csf=1&web=1&e=9dOpZt)
  * Tuesday,   March 28, 2023 - 11:00 to 13:00 - Room A-132 [Recording](https://sissa-my.sharepoint.com/:v:/r/personal/dtorlo_sissa_it/Documents/Registrazioni/High%20order%20accurate%20time%20integration%20methods-20230328_110037-Registrazione%20della%20riunione.mp4?csf=1&web=1&e=5jwM4B)
  * Wednesday, March 29, 2023 - 11:00 to 13:00 - Room A-133
- * Thursday,  March 30, 2023 - 11:00 to 13:00 - Room A-128-129
+ * Tuesday,  April 04, 2023 - 11:00 to 13:00 - Room ???
 
 Microsoft Teams link
 ===========
