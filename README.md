@@ -37,7 +37,7 @@ Schedule
  * Thursday,  March 23, 2023 - 11:00 to 13:00 - Room A-133 [Recording](https://sissa-my.sharepoint.com/:v:/g/personal/dtorlo_sissa_it/EQk01PfxP2JApszAY8GERj8B8PlSwoyvzxsaFHtoxWyXJA?e=s5bhZd)
  * Tuesday,   March 28, 2023 - 11:00 to 13:00 - Room A-132 [Recording](https://sissa-my.sharepoint.com/:v:/g/personal/dtorlo_sissa_it/EQNn4tx-cmhPhFLCW2FI6MsBdJmQpl0YcI1P3sKDpzp8eg?e=q0jDVT)
  * Wednesday, March 29, 2023 - 11:00 to 13:00 - Room A-133 [Recording](https://sissa-my.sharepoint.com/:v:/g/personal/dtorlo_sissa_it/EdNloWIkSoRBhFu9IMV2hYwB8khwa5ujuNsEX3UPDqOCMA?e=AzHstH)
- * Tuesday,  April 04, 2023 - 11:00 to 13:00 - Room A-133
+ * Tuesday,  April 04, 2023 - 11:00 to 13:00 - Room A-133 [Recording](https://sissa-my.sharepoint.com/:v:/g/personal/dtorlo_sissa_it/EeMLNwKM1jFLv3Cpnw32OzcBuQxAKuSmRIE5fZ4uVyVpPA?e=jmL6ot)
 
 Microsoft Teams link
 ===========
