@@ -26,22 +26,24 @@ Prerequisites
       * Test the installation with the [Chapter 0 Notebook](Chapter%200%20Test.ipynb)
 
 
-Schedule
+Schedule 2024
 ========
- * Tuesday,   March 7, 2023  - 11:00 to 13:00 - Room A-132
- * Wednesday, March 8, 2023  - 11:00 to 13:00 - Room A-133
- * Thursday,  March 9, 2023  - 11:00 to 13:00 - Room A-133
- * Wednesday, March 15, 2023 - 11:00 to 13:00 - Room A-133 [Recording](https://sissa-my.sharepoint.com/:v:/g/personal/dtorlo_sissa_it/EaqfvBdLfCZGmMLBsCW3UwoB0y3g-xILtJgiAlPdvWBfcA?e=04EoG0)
- * Tuesday,   March 21, 2023 - 10:30 to 12:00 - Room A-132 [Recording](https://sissa-my.sharepoint.com/:v:/g/personal/dtorlo_sissa_it/EXeMq7OpdedMtmuVl-eENfQBtC7CGOMH3yXmiF3vlVl2DA?e=UDTrzM)
- * Wednesday, March 22, 2023 - 11:00 to 13:00 - Room A-133 [Recording](https://sissa-my.sharepoint.com/:v:/g/personal/dtorlo_sissa_it/ETw7hPthhdpCiJvxYr41iwUBwlzqrVStyELWMjbMozIRMg?e=USw7Sf)
- * Thursday,  March 23, 2023 - 11:00 to 13:00 - Room A-133 [Recording](https://sissa-my.sharepoint.com/:v:/g/personal/dtorlo_sissa_it/EQk01PfxP2JApszAY8GERj8B8PlSwoyvzxsaFHtoxWyXJA?e=s5bhZd)
- * Tuesday,   March 28, 2023 - 11:00 to 13:00 - Room A-132 [Recording](https://sissa-my.sharepoint.com/:v:/g/personal/dtorlo_sissa_it/EQNn4tx-cmhPhFLCW2FI6MsBdJmQpl0YcI1P3sKDpzp8eg?e=q0jDVT)
- * Wednesday, March 29, 2023 - 11:00 to 13:00 - Room A-133 [Recording](https://sissa-my.sharepoint.com/:v:/g/personal/dtorlo_sissa_it/EdNloWIkSoRBhFu9IMV2hYwB8khwa5ujuNsEX3UPDqOCMA?e=AzHstH)
- * Tuesday,  April 04, 2023 - 11:00 to 13:00 - Room A-133 [Recording](https://sissa-my.sharepoint.com/:v:/g/personal/dtorlo_sissa_it/EeMLNwKM1jFLv3Cpnw32OzcBuQxAKuSmRIE5fZ4uVyVpPA?e=jmL6ot)
+| Day                 | Time            |Room |
+|  :------------      |:--------------- |:--- |
+| Tuesday,   March 5  | 11:00 to 13:00  | 131 |
+| Tuesday,   March 5  | 14:00 to 16:00  | 131 |
+| Wednesday, March 6  | 11:00 to 13:00  | 131 |
+| Wednesday, March 6  | 14:00 to 16:00  | 131 |
+| Thursday,  March 7  | 14:00 to 16:00  | 131 |
+| Tuesday,   March 12 | 11:00 to 13:00  | 131 |
+| Tuesday,   March 12 | 14:00 to 16:00  | 131 |
+| Wednesday, March 13 | 11:00 to 13:00  | **132** |
+| Wednesday, March 13 | 14:00 to 16:00  | 131 |
+| Thursday,  March 14 | 14:00 to 16:00  | 131 |
 
 Microsoft Teams link
 ===========
-The couse can be attended online at this [link on Microsoft Teams](https://teams.microsoft.com/l/meetup-join/19%3ameeting_YTUzYzZhYjAtYjBlNC00MWY4LTk5OGMtNzMwYjM0MzMyMmMx%40thread.v2/0?context=%7b%22Tid%22%3a%22e4dd3336-ea1f-432c-b1e1-6966e8584f1b%22%2c%22Oid%22%3a%22cff80bd0-453f-4c4f-a6fd-61e7af40553d%22%7d) 
+The couse can be attended online, a link will be provided.
 
 
 Program
