@@ -1,7 +1,7 @@
 # HighOrderODESolvers
 [![License: MIT](https://img.shields.io/badge/License-MIT-success.svg)](https://opensource.org/licenses/MIT)
 
-This is a repository for the course on "Topics in high order accurate time integration methods" held in the Doctoral School at SISSA Trieste ([Course Page](https://www.math.sissa.it/course/phd-course/topics-high-order-accurate-time-integration-methods)). 
+This is a repository for the course on "Topics in high order accurate time integration methods" held in the Doctoral School at SISSA Trieste ([Course Page 2024](https://www.math.sissa.it/course/phd-course/topics-high-order-accurate-time-integration-methods-0)). 
 
 
 The code developed in the course is available in this repository under the MIT License, without any warranty.
