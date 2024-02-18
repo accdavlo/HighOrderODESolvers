@@ -30,10 +30,10 @@ Schedule 2024
 ========
 | Day                 | Time            |Room |
 |  :------------      |:--------------- |:--- |
-| Tuesday,   March 5  | 11:00 to 13:00  | 131 |
 | Tuesday,   March 5  | 14:00 to 16:00  | 131 |
 | Wednesday, March 6  | 11:00 to 13:00  | 131 |
 | Wednesday, March 6  | 14:00 to 16:00  | 131 |
+| Thursday,  March 7  | 11:00 to 13:00  | 131 |
 | Thursday,  March 7  | 14:00 to 16:00  | 131 |
 | Tuesday,   March 12 | 11:00 to 13:00  | 131 |
 | Tuesday,   March 12 | 14:00 to 16:00  | 131 |
