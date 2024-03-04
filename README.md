@@ -38,7 +38,7 @@ Schedule 2024
 | Tuesday,   March 19 | 11:00 to 13:00  | 131 |
 | Wednesday, March 20 | 11:00 to 13:00  | **133** |
 | Wednesday, March 20 | 14:00 to 16:00  | 131 |
-| Thursday,  March 7  | 14:00 to 16:00  | 131 |
+| Thursday,  March 21 | 14:00 to 16:00  | 131 |
 
 
 Microsoft Teams link
