@@ -45,6 +45,10 @@ Microsoft Teams link
 ===========
 The couse can be attended online at [this link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MmYxMDg5YjYtNTFmMy00ZmJhLWJmMDQtZmQyM2Y5NjA4MWRh%40thread.v2/0?context=%7b%22Tid%22%3a%22e4dd3336-ea1f-432c-b1e1-6966e8584f1b%22%2c%22Oid%22%3a%22cff80bd0-453f-4c4f-a6fd-61e7af40553d%22%7d).
 
+Recordings
+===========
+* [Tuesday,   March 12, 11:00 to 13:00](https://sissa-my.sharepoint.com/:v:/g/personal/dtorlo_sissa_it/EaInWF2qW8VFsquajqZ8RHIBl8TryrNoNrTdPeFQ0E3aLw?e=zdjicg)
+* [Tuesday,   March 12, 14:00 to 16:00](https://sissa-my.sharepoint.com/:v:/g/personal/dtorlo_sissa_it/EUTbdtcwpL9Pkn1NS4u4ZBEB4HM2ou1s4UKHX9b3PsFp8A?e=lQfGBt)
 
 Program
 ======
