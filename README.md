@@ -43,7 +43,7 @@ Schedule 2024
 
 Microsoft Teams link
 ===========
-The couse can be attended online, a link will be provided.
+The couse can be attended online at [this link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MmYxMDg5YjYtNTFmMy00ZmJhLWJmMDQtZmQyM2Y5NjA4MWRh%40thread.v2/0?context=%7b%22Tid%22%3a%22e4dd3336-ea1f-432c-b1e1-6966e8584f1b%22%2c%22Oid%22%3a%22cff80bd0-453f-4c4f-a6fd-61e7af40553d%22%7d).
 
 
 Program
