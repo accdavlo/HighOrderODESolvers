@@ -47,10 +47,11 @@ The couse can be attended online at [this link](https://teams.microsoft.com/l/me
 
 Recordings
 ===========
-* [Tuesday,   March 12, 11:00 to 13:00](https://sissa-my.sharepoint.com/:v:/g/personal/dtorlo_sissa_it/EaInWF2qW8VFsquajqZ8RHIBl8TryrNoNrTdPeFQ0E3aLw?e=zdjicg)
-* [Tuesday,   March 12, 14:00 to 16:00](https://sissa-my.sharepoint.com/:v:/g/personal/dtorlo_sissa_it/EUTbdtcwpL9Pkn1NS4u4ZBEB4HM2ou1s4UKHX9b3PsFp8A?e=lQfGBt)
-* [Wednesday,   March 13, 11:00 to 13:00](https://sissa-my.sharepoint.com/:v:/g/personal/dtorlo_sissa_it/ERBQe4wwPXtFizjBtzHmwcABom1rQZ_AxHn9LOF4EwD02g)
-* [Wednesday,   March 13, 14:00 to 16:00](https://sissa-my.sharepoint.com/:v:/g/personal/dtorlo_sissa_it/EWvyiziA6gBBliTqViZENXsBPPYvFPkksuMEBW43TmqC0g)
+* [Tuesday,    March 12, 11:00 to 13:00](https://sissa-my.sharepoint.com/:v:/g/personal/dtorlo_sissa_it/EaInWF2qW8VFsquajqZ8RHIBl8TryrNoNrTdPeFQ0E3aLw?e=zdjicg)
+* [Tuesday,    March 12, 14:00 to 16:00](https://sissa-my.sharepoint.com/:v:/g/personal/dtorlo_sissa_it/EUTbdtcwpL9Pkn1NS4u4ZBEB4HM2ou1s4UKHX9b3PsFp8A?e=lQfGBt)
+* [Wednesday,  March 13, 11:00 to 13:00](https://sissa-my.sharepoint.com/:v:/g/personal/dtorlo_sissa_it/ERBQe4wwPXtFizjBtzHmwcABom1rQZ_AxHn9LOF4EwD02g)
+* [Wednesday,  March 13, 14:00 to 16:00](https://sissa-my.sharepoint.com/:v:/g/personal/dtorlo_sissa_it/EWvyiziA6gBBliTqViZENXsBPPYvFPkksuMEBW43TmqC0g)
+* [Thursday,   March 14, 14:00 to 18:00](https://sissa-my.sharepoint.com/:v:/g/personal/dtorlo_sissa_it/EeceHltRGhhOjxODoQGtpFMB8uCLlFddnt4MKr2ONWmGng?e=spbs9K)
 
 
 Program
