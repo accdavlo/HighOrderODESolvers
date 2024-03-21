@@ -1,6 +1,4 @@
-# TODO: cose da aggiungere
-
-* Projects: 
+# Possible projects
   * Stability (Minion) and/or code DeC IMEX for FD advection/diffusion (with a fixed coefficient, letting only dt/dx change?)
   * Relaxation ADER/DeC applications on Burgers smooth
   * Implicit ADER as RK and IMEX ADER
