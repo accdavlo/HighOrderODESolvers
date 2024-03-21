@@ -16,17 +16,16 @@
 ## Relaxation ADER/DeC applications on Burgers smooth -> Dario Coscia
 
 Study the discretization of the (in)viscid Burgers' equation
-$$
-\partial_t u + \partial_x (u^2/2) - \varepsilon \partial_{xx} u=0,
-$$
+
+$\partial_t u + \partial_x (u^2/2) - \varepsilon \partial_{xx} u=0,$
+
 given by a FD formula on a 1D periodic domain
-$$
-\partial_t u_j = \frac{F_{j+1/2}-F_{j-1/2}}{\Delta x}
-$$
+
+$\partial_t u_j = \frac{F_{j+1/2}-F_{j-1/2}}{\Delta x}$
+
 with
-$$
-F_{j+1/2} = \frac{u_{j+1}^2 + u_{j}u_{j+1} + u_j^2}{6} -\varepsilon (u_{j+1}-u_j).
-$$
+
+$F_{j+1/2} = \frac{u_{j+1}^2 + u_{j}u_{j+1} + u_j^2}{6} -\varepsilon (u_{j+1}-u_j).$
 
 1. Check that the discretization is consistent.
 2. Chech that for the inviscid case ($\varepsilon =0$) the spatial discretization is energy preserving and in the viscous case ($\varepsilon >0$) the spatial discretization is energy dissipative.
@@ -36,9 +35,7 @@ $$
 ## Stability for IMEX schemes with spectral methods -> Nicola Clinco
 
 Take the advection diffusion equation
-$$
-\partial_t u + a \partial_x u + d \partial_{xx} u = 0
-$$
+$\partial_t u + a \partial_x u + d \partial_{xx} u = 0$
 consider the Fourier spectral method on it, considering $u = \sum_k \hat{u}_k e^{ixk}$. 
 The weak formulation generated has a very simple matrix structure with diagonal matrices.
 
