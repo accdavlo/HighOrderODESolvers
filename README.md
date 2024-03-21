@@ -55,6 +55,7 @@ Recordings
 * [Tuesday,    March 19, 11:00 to 13:00](https://sissa-my.sharepoint.com/:v:/g/personal/dtorlo_sissa_it/Eb6f7KX2omlMnhqVn5taJ6cBAWcB4eqNbbaxCps_Ht3AkA?e=6wGbAp)
 * [Wednesday,  March 20, 11:00 to 13:00](https://sissa-my.sharepoint.com/:v:/g/personal/dtorlo_sissa_it/Ea6L7I9TtbVKiooUXOFWip8BA_GnaSm9sJUSvbpGb0dlrA?e=aCYvDU)
 * [Wednesday,  March 20, 14:00 to 16:00](https://sissa-my.sharepoint.com/:v:/g/personal/dtorlo_sissa_it/EZ7_Z_V8hrVFmEcunvRBvfIB76hEAkpNOQ5A69EM0Kyq9Q?e=bkRd0U)
+* [Thursday,   March 21, 14:00 to 16:00](https://sissa-my.sharepoint.com/:v:/g/personal/dtorlo_sissa_it/EaMAQ3khh5BLoQW4IdRdHXEBJVx6XKCyHt2yoinN3-BTBg?e=VuayMf)
 
 
 
