@@ -43,6 +43,6 @@ The weak formulation generated has a very simple matrix structure with diagonal 
 4. Nonlinear? I have an option, but we can discuss if you have something in mind.
  
 
-## Isabella Gonnella
+## ODE solvers comparison for Entropic Wasserstein Gradient Flows/JKO algorithm -> Isabella Gonnella
 
 ## Rashid Ashraf
