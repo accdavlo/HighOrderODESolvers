@@ -23,7 +23,7 @@ $\partial_t u_j = \frac{F_{j+1/2}-F_{j-1/2}}{\Delta x}$
 
 with
 
-$F_{j+1/2} = \frac{u_{j+1}^2 + u_{j}u_{j+1} + u_j^2}{6} -\varepsilon (u_{j+1}-u_j).$
+$F_{j+1/2} = \frac{u_{j+1}^2 + u_{j}u_{j+1} + u_j^2}{6} -\frac{\varepsilon}{\Delta x} (u_{j+1}-u_j).$
 
 1. Check that the discretization is consistent.
 2. Chech that for the inviscid case ($\varepsilon =0$) the spatial discretization is energy preserving and in the viscous case ($\varepsilon >0$) the spatial discretization is energy dissipative.
