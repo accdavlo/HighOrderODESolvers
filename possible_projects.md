@@ -11,7 +11,7 @@
 
 ## ODE solvers and time performances for generative models -> Guglielmo Padula 
 
-## Relaxation ADER/DeC applications on Burgers smooth -> Dario Coscia
+## Relaxation ADER/DeC applications on Burgers smooth -> Dario Coscia/Rashid Ashraf
 
 Study the discretization of the (in)viscid Burgers' equation
 
@@ -45,4 +45,3 @@ The weak formulation generated has a very simple matrix structure with diagonal 
 
 ## ODE solvers comparison for Entropic Wasserstein Gradient Flows/JKO algorithm -> Isabella Gonnella
 
-## Rashid Ashraf
